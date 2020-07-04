@@ -1,19 +1,15 @@
-import axios from 'axios';
+import './../sass/main.scss';
+// import axios from 'axios';
 
-const test = async id => {
-    try {
-        const res = await axios({
-            "method": "GET",
-            "url": "https://cors-anywhere.herokuapp.com/https://api.ksoft.si/lyrics/search?q=bieber",
-            "headers": {
-                'Authorization': 'Bearer '
-            }
-        })
-        console.log(res);
-    } catch (error) {
-        console.log(error);
-    }
+// const test = async id => {
+//     try {
+//         let q = 'bohemian rhapsody'
+//         const res = await axios(`https://api.happi.dev/v1/music?q=${q}&limit=&apikey=00a8a5AthbVcUElvzazSkFAd0dGnp9i6GPwCNsSHP3nkypx4pd9mMkQY&type=`);
+//         console.log(res);
+//     } catch (error) {
+//         console.log(error);
+//     }
 
-}
+// }
 
-test();
+// test();
