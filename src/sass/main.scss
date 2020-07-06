@@ -1,5 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&family=Source+Sans+Pro:wght@700&display=swap");
+
 @import "abstracts/variables";
 @import "abstracts/mixins";
 
+@import "base/base";
 @import "base/reset";
 @import "base/typography";
+
+@import "layout/container";
+@import "layout/header";
+@import "layout/navigation";
+
+@import "components/search-bar";
+@import "components/button";
+
+@import "pages/home";

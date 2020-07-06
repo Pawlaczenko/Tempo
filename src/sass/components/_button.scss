@@ -1,0 +1,30 @@
+.cta {
+    &--dark {
+        background-color: $color-secondary-dark;
+    }
+    &--light {
+        background-color: $color-primary;
+    }
+
+    border: none;
+    border-radius: 1.3rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 3rem;
+    cursor: pointer;
+
+    &__icon {
+        width: 3.5rem;
+        height: 3.5rem;
+        fill: $color-white;
+        margin-right: 2.5rem;
+    }
+
+    &__text {
+        color: $color-white;
+        font-weight: bold;
+        font-size: 2rem;
+    }
+}

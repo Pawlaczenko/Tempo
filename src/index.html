@@ -7,8 +7,59 @@
 </head>
 
 <body>
-    <p>Hello world</p>
-    <img src="img/logo.png" alt="logo">
+    <div class="background"></div>
+    <div class="container">
+        <header class="header">
+            <figure class="header__logo">
+                <img src="./img/logo.png" alt="logo" class="header__logo-img">
+            </figure>
+            <nav class="header__nav nav">
+                <ul class="nav__list">
+                    <li class="nav__list-item nav__list-item--active">
+                        <a href="#home" class="nav__list-link">Home</a>
+                    </li>
+                    <li class="nav__list-item"><a href="#about" class="nav__list-link">About</a></li>
+                    <li class="nav__list-item"><a href="#" class="nav__list-link">My work</a></li>
+                </ul>
+            </nav>
+            <section class="search-bar search-bar--header">
+                <input type="text" class="search-bar__input" placeholder="Search">
+                <button class="search-bar__button">
+                    <svg class="search-bar__icon">
+                        <use xlink:href="./assets/img/_sprite.svg#icon-search"></use>
+                    </svg>
+                </button>
+            </section>
+        </header>
+        <main class="main home">
+            <h1 class="home__heading heading--1">
+                Try <span class="heading--highlight">your</span> typing speed <br />
+                with <span class="heading--highlight">your</span> favorite songs
+            </h1>
+            <div class="action">
+                <section class="search-bar search-bar--action action__search-bar">
+                    <input type="text" class="search-bar__input" placeholder="Search for your song...">
+                    <button class="search-bar__button">
+                        <svg class="search-bar__icon">
+                            <use xlink:href="./assets/img/_sprite.svg#icon-search"></use>
+                        </svg>
+                    </button>
+                </section>
+                <span class="action__or">
+                    or
+                </span>
+                <button class="action__cta cta cta--dark">
+                    <svg class="cta__icon">
+                        <use xlink:href="./assets/img/_sprite.svg#icon-random"></use>
+                    </svg>
+                    <p class="cta__text">Pick a random song</p>
+                </button>
+            </div>
+        </main>
+        <figure class="container__background">
+            <img src="./img/keyboard.png" alt="keyboard" class="container__image">
+        </figure>
+    </div>
 </body>
 
 </html>

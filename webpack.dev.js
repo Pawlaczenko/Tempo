@@ -1,7 +1,8 @@
 const path = require("path");
 const common = require("./webpack.common");
 const merge = require("webpack-merge");
-var HtmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = merge(common, {
   mode: "development",
@@ -12,6 +13,14 @@ module.exports = merge(common, {
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html"
+    }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: './src/img/_sprite.svg',
+          to: 'assets/img/', // relative path in output directory
+        }
+      ]
     })
   ],
   module: {

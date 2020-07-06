@@ -1,0 +1,11 @@
+.heading {
+    &--1 {
+        font-size: 7rem;
+        font-family: $font-secondary;
+        font-weight: bold;
+    }
+
+    &--highlight {
+        color: $color-primary;
+    }
+}
