@@ -1,0 +1,22 @@
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; // 1rem = 10px;
+    font-family: $font-primary;
+}
+
+body {
+    overflow: hidden;
+}
+
+.background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+
+    width: 100%;
+    height: 100vh;
+    background-image: url("./../img/background.svg");
+    background-size: 101%;
+    background-position: center;
+}

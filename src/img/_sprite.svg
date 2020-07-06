@@ -1,0 +1,35 @@
+<!-- <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<symbol id="icon-random" viewBox="0 0 24 24">
+<path d="M14.813 13.406l3.141 3.141 2.063-2.063v5.531h-5.531l2.063-2.063-3.141-3.141zM14.484 3.984h5.531v5.531l-2.063-2.063-12.563 12.563-1.406-1.406 12.563-12.563zM10.594 9.188l-1.406 1.406-5.203-5.203 1.406-1.406z"></path>
+</symbol>
+<symbol id="icon-enter" viewBox="0 0 24 24">
+<path d="M18.984 6.984h2.016v6h-15.188l3.609 3.609-1.406 1.406-6-6 6-6 1.406 1.406-3.609 3.609h13.172v-4.031z"></path>
+</symbol>
+<symbol id="icon-home" viewBox="0 0 24 24">
+<path d="M9.984 20.016h-4.969v-8.016h-3l9.984-9 9.984 9h-3v8.016h-4.969v-6h-4.031v6z"></path>
+</symbol>
+<symbol id="icon-search" viewBox="0 0 24 24">
+<path d="M9.516 14.016q1.875 0 3.188-1.313t1.313-3.188-1.313-3.188-3.188-1.313-3.188 1.313-1.313 3.188 1.313 3.188 3.188 1.313zM15.516 14.016l4.969 4.969-1.5 1.5-4.969-4.969v-0.797l-0.281-0.281q-1.781 1.547-4.219 1.547-2.719 0-4.617-1.875t-1.898-4.594 1.898-4.617 4.617-1.898 4.594 1.898 1.875 4.617q0 0.984-0.469 2.227t-1.078 1.992l0.281 0.281h0.797z"></path>
+</symbol>
+</defs>
+</svg> -->
+
+<svg width="0" height="0" class="hidden">
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="icon-enter">
+    <title>enter</title>
+    <path d="M18.984 6.984H21v6H5.812l3.609 3.609-1.406 1.406-6-6 6-6 1.406 1.406-3.609 3.609h13.172V6.983z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="icon-home">
+    <title>home</title>
+    <path d="M9.984 20.016H5.015V12h-3l9.984-9 9.984 9h-3v8.016h-4.969v-6H9.983v6z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="icon-random">
+    <title>random</title>
+    <path d="M14.813 13.406l3.141 3.141 2.063-2.063v5.531h-5.531l2.063-2.063-3.141-3.141zm-.329-9.422h5.531v5.531l-2.063-2.063L5.389 20.015l-1.406-1.406L16.546 6.046zm-3.89 5.204l-1.406 1.406-5.203-5.203 1.406-1.406z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="icon-search">
+    <title>search</title>
+    <path d="M9.516 14.016q1.875 0 3.188-1.313t1.313-3.188-1.313-3.188-3.188-1.313-3.188 1.313-1.313 3.188 1.313 3.188 3.188 1.313zm6 0l4.969 4.969-1.5 1.5-4.969-4.969v-.797l-.281-.281q-1.781 1.547-4.219 1.547-2.719 0-4.617-1.875T3.001 9.516t1.898-4.617 4.617-1.898 4.594 1.898 1.875 4.617q0 .984-.469 2.227t-1.078 1.992l.281.281h.797z"></path>
+  </symbol>
+</svg>
