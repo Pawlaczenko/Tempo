@@ -3,6 +3,7 @@ const common = require("./webpack.common");
 const merge = require("webpack-merge");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyPlugin = require('copy-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 
 module.exports = merge(common, {
   mode: "development",
@@ -21,7 +22,8 @@ module.exports = merge(common, {
           to: 'assets/img/', // relative path in output directory
         }
       ]
-    })
+    }),
+    new FaviconsWebpackPlugin('./src/img/favicon.ico')
   ],
   module: {
     rules: [

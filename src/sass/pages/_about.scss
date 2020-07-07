@@ -1,0 +1,42 @@
+.about {
+    &__heading {
+        margin-top: 6rem;
+    }
+
+    &__text {
+        max-width: 75rem;
+        margin: 2rem 0;
+    }
+
+    &__paragraph {
+        font-size: 2.2rem;
+        margin: 2rem 2rem;
+        position: relative;
+
+        &:before {
+            content: "";
+            display: block;
+            width: 3px;
+            height: 100%;
+            background-color: $color-primary;
+
+            position: absolute;
+            left: -2rem;
+            top: 0;
+        }
+
+        &:last-child {
+            max-width: 80%;
+        }
+    }
+
+    &__cta {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        margin-left: 2rem;
+        margin-top: 4rem;
+    }
+}

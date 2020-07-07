@@ -59,6 +59,10 @@
         @include flex-center-center;
     }
 
+    &__button:hover &__icon {
+        transform: scale(1.1);
+    }
+
     &__icon {
         fill: $color-white;
     }

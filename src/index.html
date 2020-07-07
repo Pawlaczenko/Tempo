@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Tempo</title>
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+    <!-- <link rel="icon" href="./img/favicon.ico" type="image/x-icon"> -->
 </head>
 
 <body>
@@ -11,7 +13,9 @@
     <div class="container">
         <header class="header">
             <figure class="header__logo">
-                <img src="./img/logo.png" alt="logo" class="header__logo-img">
+                <a href="#home">
+                    <img src="./img/logo.png" alt="logo" class="header__logo-img">
+                </a>
             </figure>
             <nav class="header__nav nav">
                 <ul class="nav__list">
@@ -31,7 +35,7 @@
                 </button>
             </section>
         </header>
-        <main class="main home">
+        <!-- <main class="main main--text home">
             <h1 class="home__heading heading--1">
                 Try <span class="heading--highlight">your</span> typing speed <br />
                 with <span class="heading--highlight">your</span> favorite songs
@@ -55,10 +59,122 @@
                     <p class="cta__text">Pick a random song</p>
                 </button>
             </div>
+            <figure class="container__background">
+                <img src="./img/keyboard.png" alt="keyboard" class="container__image">
+            </figure>
+        </main> -->
+        <!-- <main class="main main--text about">
+            <h1 class="about__heading heading--1">
+                About <span class="heading--highlight">Tempo</span>
+            </h1>
+            <section class="about__text">
+                <p class="about__paragraph">Tempo is a typing game, where you can test your typing speed
+                    using your favorite songs. Just search for a song,
+                    artist, or album and you'll get the results.
+                </p>
+                <p class="about__paragraph">
+                    Type the lyrics as fast as you can and see how
+                    well did you do. Your score depends on how
+                    many words per minute you type, and the
+                    number of errors you make.
+                </p>
+            </section>
+            <div class="about__cta">
+                <span class="regular-text">
+                    Start right now:
+                </span>
+                <button class="cta cta--dark">
+                    <svg class="cta__icon">
+                        <use xlink:href="./assets/img/_sprite.svg#icon-random"></use>
+                    </svg>
+                    <p class="cta__text">Pick a random song</p>
+                </button>
+            </div>
+            <figure class="container__background">
+                <img src="./img/keyboard.png" alt="keyboard" class="container__image">
+            </figure>
+        </main> -->
+        <main class="main main--search search">
+            <h2 class="search__heading heading--2">
+                Results for <span class="heading--highlight heading--underline">Redbone</span>:
+            </h2>
+            <section class="search__results">
+                <div class="song">
+                    <figure class="song__album-cover">
+                        <img src="./img/test1.png" alt="Redbone" class="song__img">
+                        <svg class="song__icon">
+                            <use xlink:href="./assets/img/_sprite.svg#icon-play"></use>
+                        </svg>
+                    </figure>
+                    <div class="song__info">
+                        <p class="song__title">Redbone</p>
+                        <p class="song__artist">by Childlish Gambino</p>
+                        <p class="song__words">321 words</p>
+                    </div>
+                </div>
+                <div class="song">
+                    <figure class="song__album-cover">
+                        <img src="./img/test2.jpg" alt="Red" class="song__img">
+                        <svg class="song__icon">
+                            <use xlink:href="./assets/img/_sprite.svg#icon-play"></use>
+                        </svg>
+                    </figure>
+                    <div class="song__info">
+                        <p class="song__title">Red</p>
+                        <p class="song__artist">by Taylor Swift</p>
+                        <p class="song__words">301 words</p>
+                    </div>
+                </div>
+                <div class="song">
+                    <figure class="song__album-cover">
+                        <img src="./img/test3.jpg" alt="Red Red Wine" class="song__img">
+                        <svg class="song__icon">
+                            <use xlink:href="./assets/img/_sprite.svg#icon-play"></use>
+                        </svg>
+                    </figure>
+                    <div class="song__info">
+                        <p class="song__title">Red Red Wine</p>
+                        <p class="song__artist">by UB40</p>
+                        <p class="song__words">234 words</p>
+                    </div>
+                </div>
+                <div class="song">
+                    <figure class="song__album-cover">
+                        <img src="./img/test4.png" alt="Red Roses" class="song__img">
+                        <svg class="song__icon">
+                            <use xlink:href="./assets/img/_sprite.svg#icon-play"></use>
+                        </svg>
+                    </figure>
+                    <div class="song__info">
+                        <p class="song__title">Red Roses</p>
+                        <p class="song__artist">by Lil Skies</p>
+                        <p class="song__words">411 words</p>
+                    </div>
+                </div>
+            </section>
+            <div class="search__pagination">
+                <ul class="pagination">
+                    <li class="pagination__item pagination__item--left">
+                        <svg class="pagination__icon">
+                            <use xlink:href="./assets/img/_sprite.svg#icon-left"></use>
+                        </svg>
+                    </li>
+                    <li class="pagination__item pagination__item--first">&mldr;</li>
+                    <li class="pagination__item">1</li>
+                    <li class="pagination__item pagination__item--current">2</li>
+                    <li class="pagination__item">3</li>
+                    <li class="pagination__item">4</li>
+                    <li class="pagination__item">5</li>
+                    <li class="pagination__item">6</li>
+                    <li class="pagination__item pagination__item--last">&mldr;</li>
+                    <li class="pagination__item pagination__item--right">
+                        <svg class="pagination__icon">
+                            <use xlink:href="./assets/img/_sprite.svg#icon-right"></use>
+                        </svg>
+                    </li>
+                </ul>
+            </div>
         </main>
-        <figure class="container__background">
-            <img src="./img/keyboard.png" alt="keyboard" class="container__image">
-        </figure>
     </div>
 </body>
 

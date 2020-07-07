@@ -1,18 +1,18 @@
 .cta {
     &--dark {
-        background-color: $color-secondary-dark;
+        background-color: $color-secondary-light;
     }
     &--light {
         background-color: $color-primary;
     }
 
-    border: none;
+    border: 3px solid $color-secondary-light;
     border-radius: 1.3rem;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.2rem 3rem;
+    padding: 0.45rem 2.2rem;
     cursor: pointer;
 
     &__icon {
@@ -26,5 +26,21 @@
         color: $color-white;
         font-weight: bold;
         font-size: 2rem;
+    }
+
+    &:hover {
+        background-color: $color-grey-1;
+    }
+
+    &:hover &__text {
+        color: $color-secondary-light;
+    }
+
+    &:hover &__icon {
+        fill: $color-secondary-light;
+    }
+
+    &:active {
+        transform: translateY(2px);
     }
 }
