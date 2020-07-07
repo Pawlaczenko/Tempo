@@ -1,12 +1,13 @@
 .cta {
     &--dark {
         background-color: $color-secondary-light;
+        border: 3px solid $color-secondary-light;
     }
     &--light {
         background-color: $color-primary;
+        border: 3px solid $color-primary;
     }
 
-    border: 3px solid $color-secondary-light;
     border-radius: 1.3rem;
 
     display: flex;
@@ -32,12 +33,20 @@
         background-color: $color-grey-1;
     }
 
-    &:hover &__text {
+    &--dark:hover &__text {
         color: $color-secondary-light;
     }
 
-    &:hover &__icon {
+    &--dark:hover &__icon {
         fill: $color-secondary-light;
+    }
+
+    &--light:hover &__text {
+        color: $color-primary;
+    }
+
+    &--light:hover &__icon {
+        fill: $color-primary;
     }
 
     &:active {
