@@ -11,6 +11,17 @@
         font-weight: normal;
     }
 
+    &--3 {
+        font-weight: bold;
+        color: $color-primary;
+        font-size: 3.5rem;
+    }
+
+    &--4 {
+        font-size: 1.8rem;
+        font-weight: bold;
+    }
+
     &--highlight {
         color: $color-primary;
     }

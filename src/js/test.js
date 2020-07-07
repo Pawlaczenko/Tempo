@@ -17,3 +17,36 @@
 // // Client_id:oO_nPR-cg9bH6alM2dBnFVeoWXXm_TzgsyPd82pSnBVqywypdvyhjegQUgU6GpYQ
 // // Client secret: qWINHLPAMWEkIxPmSEMwZKecGTbIhZ9AO0Q9hxrSAgqQ5xmkrWhnatl2YY-KcZUcvLdKJI3LLvzyEjfr7wfHYg
 // // Token: 6A_LOpZ4CJ3BJTu-qHhhd_-DQw-Q_sGHCF8BhsHH-3BVDCr6X1_JzH6PXrcUqvPZ
+
+import Chart from 'chart.js';
+
+// // let ctx = document.querySelector("#wpmChart").getContext('2d');
+// // export const myChart = new Chart(ctx, {
+// //     type: 'bar',
+// //     backgroundColor: 'white',
+// //     data: {
+// //         labels: [1, 2, 3, 4],
+// //         datasets: [{
+// //             label: 'words typed in a minute',
+// //             data: [45, 52, 45, 12],
+// //             backgroundColor: 'rgba(239, 131, 84,1)',
+// //         }]
+// //     },
+// //     options: {
+// //         scales: {
+// //             yAxes: [{
+// //                 ticks: {
+// //                     beginAtZero: true
+// //                 }
+// //             }]
+// //         },
+// //         legend: {
+// //             defaultFontColor: 'black',
+// //             labels: {
+// //                 // This more specific font property overrides the global property
+// //                 fontColor: 'black'
+// //             }
+// //         }
+// //     }
+// // });
+// // Chart.defaults.global.defaultFontColor = 'black';
