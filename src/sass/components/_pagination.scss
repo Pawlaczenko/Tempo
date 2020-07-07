@@ -1,0 +1,35 @@
+.pagination {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__item {
+        font-size: 1.9rem;
+        font-weight: bold;
+        cursor: pointer;
+
+        width: 3rem;
+        height: 3rem;
+        border-radius: 5px;
+        margin: 0 0.2rem;
+
+        @include flex-center-center;
+
+        &:hover,
+        &--current {
+            background-color: $color-primary;
+            color: $color-white;
+        }
+    }
+
+    &__item:hover > &__icon {
+        fill: $color-white;
+    }
+
+    &__icon {
+        width: 2.6rem;
+        height: 2.6rem;
+        fill: #000;
+    }
+}

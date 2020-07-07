@@ -1,0 +1,162 @@
+.search {
+    padding: 1.5rem 13rem;
+    height: 100%;
+
+    &__results {
+        overflow-y: auto;
+        max-height: 60vh;
+        padding: 4rem 0;
+
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+        column-gap: 6rem;
+        row-gap: 6rem;
+    }
+
+    &__pagination {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        position: absolute;
+        bottom: 3.7rem;
+        left: 50%;
+
+        transform: translateX(-50%);
+    }
+}
+
+.song {
+    display: flex;
+    cursor: pointer;
+    color: $color-grey-3;
+    position: relative;
+    transition: all 0.2s;
+
+    &::before,
+    &::after {
+        content: "";
+        display: block;
+
+        position: absolute;
+        right: 0;
+
+        width: 3rem;
+        height: 3rem;
+        border-right: 1px solid rgba($color: $color-grey-3, $alpha: 0.5);
+    }
+
+    &::before {
+        top: 0;
+        border-top: 1px solid rgba($color: $color-grey-3, $alpha: 0.5);
+    }
+
+    &::after {
+        bottom: 0;
+        border-bottom: 1px solid rgba($color: $color-grey-3, $alpha: 0.5);
+    }
+
+    &__album-cover {
+        min-width: 13rem;
+        max-width: 13rem;
+        height: 13rem;
+        position: relative;
+        overflow: hidden;
+
+        &::after {
+            content: "";
+            display: block;
+            opacity: 0;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 13rem;
+            height: 13rem;
+            border: 0.6rem solid $color-primary;
+            background-color: rgba($color: $color-primary, $alpha: 0.6);
+
+            transition: all 0.2s;
+        }
+    }
+
+    &__img {
+        width: 100%;
+        height: 100%;
+        display: block;
+
+        transition: all 0.2s;
+    }
+
+    &__icon {
+        position: absolute;
+        fill: $color-primary;
+        opacity: 0;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        width: 7.5rem;
+        height: 7.5rem;
+
+        transition: all 0.2s;
+    }
+
+    &__info {
+        margin-left: 1.8rem;
+        display: grid;
+        grid-template-rows: auto auto 1fr;
+        align-items: flex-end;
+
+        padding: 0.5rem 0;
+    }
+
+    &__title {
+        font-size: 2.9rem;
+        line-height: 1;
+        margin-bottom: 1rem;
+    }
+
+    &__artist {
+        font-size: 1.9rem;
+        font-weight: 200;
+    }
+
+    &__words {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: $color-primary;
+    }
+
+    &:hover {
+        background-color: $color-primary;
+        color: $color-white;
+        box-shadow: 4px 4px 24px -6px rgba(0, 0, 0, 0.5);
+
+        &::before,
+        &::after {
+            opacity: 0;
+        }
+    }
+
+    &:hover &__title {
+        color: white;
+    }
+
+    &:hover &__words {
+        color: white;
+    }
+
+    &:hover &__icon {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    &:hover &__album-cover {
+        &::after {
+            opacity: 1;
+        }
+    }
+
+    &:hover &__img {
+        transform: scale(0.95);
+    }
+}

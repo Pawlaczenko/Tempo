@@ -5,7 +5,22 @@
         font-weight: bold;
     }
 
+    &--2 {
+        font-size: 2.2rem;
+        font-family: $font-primary;
+        font-weight: normal;
+    }
+
     &--highlight {
         color: $color-primary;
     }
+
+    &--underline {
+        text-decoration: underline;
+    }
+}
+
+.regular-text {
+    font-size: 1.9rem;
+    margin-right: 2.7rem;
 }
