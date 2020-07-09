@@ -1,6 +1,8 @@
 import { elements } from './base';
 
-export const getInput = () => elements.searchBar.value;
+export const getInput = id => {
+    return (id === 'home') ? document.querySelector('.search-bar__input--action').value : elements.searchBar.value;
+};
 export const clearInput = () => { elements.searchBar.value = '' };
 
 const countWords = lyrics => {
@@ -11,10 +13,15 @@ const countWords = lyrics => {
     return lyrics.split(' ').length;
 }
 
-export const limitRecipeTitle = (title, limit = 17) => {
+const limitTitle = (title, limit = 16) => {
     const newTitle = [];
-    if (title.length > limit) {
-        title.split(' ').reduce((acc, curr) => {
+    if (title.length >= limit) {
+        title = title.split(' ');
+        console.log(title[0]);
+        if (title[0].length > 11) {
+            return `${title[0].slice(0, 10)}...`;
+        }
+        title.reduce((acc, curr) => {
             if (acc + curr.length <= limit) {
                 newTitle.push(curr);
             }
@@ -25,17 +32,22 @@ export const limitRecipeTitle = (title, limit = 17) => {
     return title;
 }
 
+const checkImage = (img) => {
+    if (img === "https://cdn.ksoft.si/images/Logo1024%20-%20W.png") return 'src/img/favico.png';
+    return img;
+}
+
 const renderSong = song => {
     const markup = `
     <div class="song" data-goto="${song.id}">
         <figure class="song__album-cover">
-            <img src="${song.album_art}" alt="Redbone" class="song__img">
+            <img src="${checkImage(song.album_art)}" alt="Redbone" class="song__img">
             <svg class="song__icon">
                 <use xlink:href="./assets/img/_sprite.svg#icon-play"></use>
             </svg>
         </figure>
         <div class="song__info">
-            <p class="song__title">${limitRecipeTitle(song.name)}</p>
+            <p class="song__title">${limitTitle(song.name)}</p>
             <p class="song__artist">by ${song.artist}</p>
             <p class="song__words">${countWords(song.lyrics)} words</p>
         </div>

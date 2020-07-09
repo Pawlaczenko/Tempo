@@ -5,6 +5,7 @@
     align-items: flex-start;
     &__heading {
         margin-top: 6rem;
+        @include fadeInAnim(0s);
     }
 }
 .action {
@@ -17,7 +18,7 @@
     grid-template-rows: repeat(3, 1fr);
     justify-items: center;
     align-items: center;
-
+    @include fadeInAnim(0.2s);
     margin-top: 3rem;
 
     &__or {

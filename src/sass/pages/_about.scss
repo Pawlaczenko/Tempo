@@ -1,11 +1,13 @@
 .about {
     &__heading {
+        @include fadeInAnim(0s);
         margin-top: 6rem;
     }
 
     &__text {
         max-width: 75rem;
         margin: 2rem 0;
+        @include fadeInAnim(0.2s);
     }
 
     &__paragraph {
@@ -31,6 +33,7 @@
     }
 
     &__cta {
+        @include fadeInAnim(0.2s);
         display: flex;
         flex-direction: row;
         justify-content: flex-start;

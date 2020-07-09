@@ -11,10 +11,12 @@ window.state = state;
 /**
  * CONTROL SEARCH
  */
-const controlSearch = async () => {
-    const query = searchView.getInput();
+const controlSearch = async (id) => {
+    console.log(id);
+    const query = searchView.getInput(id);
     if (query) {
         const site = window.location.hash = 'search';
+        state.page = 'search';
 
         //Create search state
         state.search = new Search(query);
@@ -25,18 +27,23 @@ const controlSearch = async () => {
             await state.search.getResults();
             common.deleteLoader();
             searchView.clearInput();
-            common.renderView('search', searchView.renderResults(state.search.results, state.search.query));
+            if (state.page === 'search') common.renderView('search', searchView.renderResults(state.search.results, state.search.query));
         } catch (error) {
             console.log(error);
         }
-
     }
 }
 
-common.elements.searchForm.addEventListener('submit', e => {
+window.addEventListener('submit', e => {
     e.preventDefault();
-    controlSearch();
-});
+    controlSearch(e.target.id.substr(2));
+})
+
+// [common.elements.searchForm, common.elements.searchFormA].forEach(item => {
+//     console.log(item.classList);
+//     // item.addEventListener('submit',controlSearch());
+// });
+
 
 /**
  * NAVIGATION CONTROL
@@ -50,15 +57,18 @@ const navigationControl = () => {
 
         switch (site) {
             case 'home': {
+                state.page = 'home';
                 common.renderView(site, homeView.renderHome());
                 break;
             }
             case 'about': {
+                state.page = 'about';
                 common.renderView(site, aboutView.renderAbout());
                 break;
             }
         }
     } else if (site === '') {
+        state.page = 'home';
         common.clearMain();
         common.elements.main.classList.add('home');
         common.renderView('home', homeView.renderHome());
@@ -66,6 +76,7 @@ const navigationControl = () => {
 }
 
 const resetPage = () => {
+    state.page = 'home';
     window.location.hash = 'home';
     common.clearMain();
     common.elements.main.classList.add('home');
