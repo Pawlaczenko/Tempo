@@ -19,36 +19,38 @@
             </figure>
             <nav class="header__nav nav">
                 <ul class="nav__list">
-                    <li class="nav__list-item nav__list-item--active">
+                    <li class="nav__list-item nav__list-item--home nav__list-item--active">
                         <a href="#home" class="nav__list-link">Home</a>
                     </li>
-                    <li class="nav__list-item"><a href="#about" class="nav__list-link">About</a></li>
+                    <li class="nav__list-item nav__list-item--about"><a href="#about" class="nav__list-link">About</a>
+                    </li>
                     <li class="nav__list-item"><a href="#" class="nav__list-link">My work</a></li>
                 </ul>
             </nav>
-            <section class="search-bar search-bar--header">
-                <input type="text" class="search-bar__input" placeholder="Search">
+            <form class="search-bar search-bar--header">
+                <input type="text" class="search-bar__input search-bar__input--header" placeholder="Search">
                 <button class="search-bar__button">
                     <svg class="search-bar__icon">
                         <use xlink:href="./assets/img/_sprite.svg#icon-search"></use>
                     </svg>
                 </button>
-            </section>
+            </form>
         </header>
-        <!-- <main class="main main--text home">
+        <main class="main"></main>
+        <!-- <main class="main">
             <h1 class="home__heading heading--1">
                 Try <span class="heading--highlight">your</span> typing speed <br />
                 with <span class="heading--highlight">your</span> favorite songs
             </h1>
             <div class="action">
-                <section class="search-bar search-bar--action action__search-bar">
+                <form class="search-bar search-bar--action action__search-bar" action="#search">
                     <input type="text" class="search-bar__input" placeholder="Search for your song...">
                     <button class="search-bar__button">
                         <svg class="search-bar__icon">
                             <use xlink:href="./assets/img/_sprite.svg#icon-search"></use>
                         </svg>
                     </button>
-                </section>
+                </form>
                 <span class="action__or">
                     or
                 </span>
@@ -63,7 +65,7 @@
                 <img src="./img/keyboard.png" alt="keyboard" class="container__image">
             </figure>
         </main> -->
-        <!-- <main class="main main--text about">
+        <!-- <main class="main about">
             <h1 class="about__heading heading--1">
                 About <span class="heading--highlight">Tempo</span>
             </h1>
@@ -94,11 +96,12 @@
                 <img src="./img/keyboard.png" alt="keyboard" class="container__image">
             </figure>
         </main> -->
-        <!-- <main class="main main--search search">
+        <!-- <main class="main search">
             <h2 class="search__heading heading--2">
                 Results for <span class="heading--highlight heading--underline">Redbone</span>:
             </h2>
             <section class="search__results">
+                <figure class="loader"></figure>
                 <div class="song">
                     <figure class="song__album-cover">
                         <img src="./img/test1.png" alt="Redbone" class="song__img">
@@ -279,7 +282,7 @@
                 </ul>
             </div>
         </main> -->
-        <main class="main main--summary summary">
+        <!-- <main class="main summary">
             <h3 class="heading--3 summary__heading">
                 Summary:
             </h3>
@@ -336,7 +339,13 @@
             <figure class="container__background">
                 <img src="./img/keyboard.png" alt="keyboard" class="container__image">
             </figure>
-        </main>
+        </main> -->
+        <!-- <main class="main main--test test">
+            <div class="test__header">
+                <div class="test__title">Redbone - Childlish Gambino</div>
+                <time class="test__timer">00:07</time>
+            </div>
+        </main> -->
     </div>
 </body>
 
