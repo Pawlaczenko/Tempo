@@ -2,6 +2,10 @@
     padding: 1.5rem 13rem;
     height: 100%;
 
+    &__heading {
+        @include fadeInAnim(0s);
+    }
+
     &__results {
         overflow-y: auto;
         max-height: 51vh;
@@ -50,6 +54,7 @@
     color: $color-grey-3;
     position: relative;
     transition: all 0.2s;
+    @include fadeInAnim(0.2s);
 
     &::before,
     &::after {

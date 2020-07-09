@@ -7,8 +7,8 @@ export const renderHome = () => {
         with <span class="heading--highlight">your</span> favorite songs
     </h1>
     <div class="action">
-        <form class="search-bar search-bar--action action__search-bar" action="#search">
-            <input type="text" class="search-bar__input" placeholder="Search for your song...">
+        <form id="s-home" class="search-bar search-bar--action action__search-bar">
+            <input type="text" class="search-bar__input search-bar__input--action" placeholder="Search for your song...">
             <button class="search-bar__button">
                 <svg class="search-bar__icon">
                     <use xlink:href="./assets/img/_sprite.svg#icon-search"></use>

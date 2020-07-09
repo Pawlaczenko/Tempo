@@ -1,3 +1,5 @@
+import gsap from 'gsap';
+
 export const elements = {
     searchForm: document.querySelector('.search-bar--header'),
     searchBar: document.querySelector('.search-bar__input--header'),
@@ -13,10 +15,14 @@ export const clearMain = () => {
     elements.main.className = 'main';
 }
 
-export const renderView = (view, markup) => {
-    elements.main.classList.add(view);
+const toggleActiveLink = view => {
     if (document.querySelector('.nav__list-item--active')) document.querySelector('.nav__list-item--active').classList.remove('nav__list-item--active');
     if (document.querySelector(`.nav__list-item--${view}`)) document.querySelector(`.nav__list-item--${view}`).classList.add('nav__list-item--active');
+}
+
+export const renderView = (view, markup) => {
+    elements.main.classList.add(view);
+    toggleActiveLink(view);
 
     elements.main.insertAdjacentHTML('afterbegin', markup);
 }

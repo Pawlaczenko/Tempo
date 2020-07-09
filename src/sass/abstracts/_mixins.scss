@@ -9,3 +9,7 @@
     align-items: center;
     justify-content: center;
 }
+
+@mixin fadeInAnim($delay) {
+    animation: fadeIn 0.5s $delay both;
+}
