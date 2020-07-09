@@ -19,11 +19,18 @@
         top: 0;
         right: -5rem;
         z-index: -1;
+        width: 60%;
+
+        //     @media only screen and (max-width: $bp-largest) {
+        //         width: 60%;
+        //     }
     }
 
     &__image {
-        width: 95%;
+        width: 100%;
         transform: rotate(15deg);
-        opacity: 0.5;
+        opacity: 1;
     }
 }
+
+//	&crarr retur arrow
