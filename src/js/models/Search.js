@@ -12,7 +12,7 @@ export default class Search {
             this.results = res.data.data;
             console.log(this.results);
         } catch (error) {
-            console.log(error);
+            return -1;
         }
     }
 }

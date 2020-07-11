@@ -1,8 +1,10 @@
 import './../sass/main.scss';
 import Search from './models/Search';
+import Game from './models/Game';
 import * as searchView from './views/searchView';
 import * as homeView from './views/homeView';
 import * as aboutView from './views/aboutView';
+import * as gameView from './views/gameView';
 import * as common from './views/base';
 
 const state = {};
@@ -11,6 +13,7 @@ window.state = state;
 /**
  * CONTROL SEARCH
  */
+
 const controlSearch = async (id) => {
     console.log(id);
     const query = searchView.getInput(id);
@@ -27,9 +30,12 @@ const controlSearch = async (id) => {
             await state.search.getResults();
             common.deleteLoader();
             searchView.clearInput();
-            if (state.page === 'search') common.renderView('search', searchView.renderResults(state.search.results, state.search.query));
+            if (state.page === 'search') {
+                common.renderView('search', searchView.renderResults(state.search.results, state.search.query));
+                addQueries();
+            }
         } catch (error) {
-            console.log(error);
+            searchView.renderError(state.search.query);
         }
     }
 }
@@ -85,6 +91,44 @@ const resetPage = () => {
 
 window.addEventListener('hashchange', navigationControl);
 window.addEventListener('load', resetPage);
+
+
+/**
+ * Game Controller
+ */
+
+
+const gameControl = song => {
+    state.hash = 'game';
+    window.location.hash = state.hash;
+    state.game = new Game(song.id, song.name, song.artist, song.lyrics);
+    // let w = song.lyrics;
+    // w = w.replace(/\n/ig, ' &crarr; ');
+    // w = w.replace(/(^\s*)|(\s*$)/gi, "");
+    // w = w.replace(/[ ]{2,}/gi, " ");
+
+    // console.log(w.split(' '));
+
+    //Render View
+    common.clearMain();
+    common.renderView('game', gameView.renderGame(state.game));
+    console.log(state.game.lyrics.split(''));
+}
+
+const addQueries = () => {
+    document.querySelector('.search__results').addEventListener('click', e => {
+        const target = e.target.closest('.song');
+        if (target) {
+            const id = target.dataset.goto;
+            const chosen = state.search.results.find(e => {
+                return e.id === id;
+            });
+            gameControl(chosen);
+        }
+    });
+}
+
+
 // common.elements.header.addEventListener('click', e => {
 //     navigationControl(e.target);
 // });
