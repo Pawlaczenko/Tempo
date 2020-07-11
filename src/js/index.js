@@ -57,6 +57,8 @@ window.addEventListener('submit', e => {
 
 const navigationControl = () => {
     const site = window.location.hash.replace('#', '');
+    if (state.timer) window.clearInterval(state.timer);
+    if (site !== 'game') window.removeEventListener('keydown', gameHandler);
 
     if (site && (site === 'home' || site === 'about')) {
         common.clearMain();
@@ -97,11 +99,35 @@ window.addEventListener('load', resetPage);
  * Game Controller
  */
 
+const gameHandler = e => {
+    let key = e.key;
+    if (state.game.ignore(key)) {
+        if (key === 'Enter' && state.game.checkForEnter()) {
+            gameView.colorLetter(state.game.index, 1);
+            state.game.changeIndex(1);
+        } else if (key === 'Backspace') {
+            console.log('backhello');
+            state.game.changeIndex(-1);
+            gameView.activateLetter(state.game.index);
+            gameView.deleteLetter(state.game.index);
+        } else {
+            if (state.game.checkLetter(key)) {
+                gameView.colorLetter(state.game.index, 1);
+                state.game.changeIndex(1);
+            } else {
+                gameView.colorLetter(state.game.index, 0);
+                state.game.changeIndex(1);
+            }
+        }
+        gameView.activateLetter(state.game.index);
+    }
+}
 
 const gameControl = song => {
     state.hash = 'game';
     window.location.hash = state.hash;
     state.game = new Game(song.id, song.name, song.artist, song.lyrics);
+
     // let w = song.lyrics;
     // w = w.replace(/\n/ig, ' &crarr; ');
     // w = w.replace(/(^\s*)|(\s*$)/gi, "");
@@ -112,8 +138,18 @@ const gameControl = song => {
     //Render View
     common.clearMain();
     common.renderView('game', gameView.renderGame(state.game));
-    console.log(state.game.lyrics.split(''));
+    gameView.activateLetter(0);
+    window.addEventListener('keydown', gameHandler);
+    window.addEventListener('keypress', intitGame, { once: true });
 }
+
+const intitGame = () => {
+    gameView.deleteAlert();
+    state.timer = window.setInterval(() => {
+        gameView.updateTime(state.game.timer());
+    }, 1000);
+}
+
 
 const addQueries = () => {
     document.querySelector('.search__results').addEventListener('click', e => {
