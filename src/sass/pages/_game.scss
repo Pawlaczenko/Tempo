@@ -25,6 +25,7 @@
     }
 
     &__lyrics {
+        font-family: "Courier New", Courier, monospace;
         margin-top: 1rem;
         border-top: 2px solid $color-grey-3;
         border-bottom: 2px solid $color-grey-3;
@@ -49,9 +50,43 @@
 }
 
 .enter {
-    color: $color-secondary-light;
-    opacity: 0.5;
+    color: rgba($color-secondary-light, 0.5);
+    padding-left: 0.4rem;
 }
 
 .letter {
+    position: relative;
+    display: inline-block;
+    &--correct {
+        color: $color-correct;
+        // background-color: $color-correct;
+    }
+
+    &--incorrect {
+        color: $color-incorrect;
+
+        &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: 0;
+            height: 1px;
+            width: 100%;
+            background-color: $color-incorrect;
+        }
+        // background-color: $color-incorrect;
+    }
+
+    &--active {
+        &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: 0;
+            height: 1px;
+            width: 100%;
+            background-color: #000;
+            animation: flash 0.5s infinite both;
+        }
+    }
 }
