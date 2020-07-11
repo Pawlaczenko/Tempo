@@ -75,3 +75,12 @@ export const renderResults = (data, query) => {
     `;
     return markup;
 }
+
+export const renderError = (query) => {
+    const markup = `
+        <span class="error">No results found for ${query}</span>
+    `;
+
+    return markup;
+}
+

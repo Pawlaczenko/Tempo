@@ -1,0 +1,57 @@
+.game {
+    padding: 1.5rem 13rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 1.5rem;
+
+        position: relative;
+    }
+
+    &__title {
+        font-size: 2.2rem;
+        font-weight: 200;
+    }
+
+    &__timer {
+        font-size: 3.5rem;
+        font-weight: 200;
+        color: $color-primary;
+    }
+
+    &__lyrics {
+        margin-top: 1rem;
+        border-top: 2px solid $color-grey-3;
+        border-bottom: 2px solid $color-grey-3;
+        padding: 1rem 1.5rem;
+        font-size: 2.8rem;
+        height: 80%;
+        overflow-y: hidden;
+    }
+
+    &__alert {
+        font-weight: bold;
+        color: $color-primary;
+        font-size: 2.6rem;
+
+        animation: flash 1s infinite both;
+
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.enter {
+    color: $color-secondary-light;
+    opacity: 0.5;
+}
+
+.letter {
+}
