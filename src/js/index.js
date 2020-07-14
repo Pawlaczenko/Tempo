@@ -109,7 +109,7 @@ window.addEventListener('load', resetPage);
  */
 
 const gameHandler = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     let key = e.key;
     if (state.game.ignore(key)) {
         // if (state.game.checkForEnter() && key !== 'Backspace') {
@@ -163,7 +163,7 @@ const gameControl = async song => {
 }
 
 const intitGame = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     gameView.deleteAlert();
     state.timer = window.setInterval(() => {
         gameView.updateTime(state.game.timer());
