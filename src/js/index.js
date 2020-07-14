@@ -161,40 +161,16 @@ const navigationControl = () => {
     if (state.timer) window.clearInterval(state.timer);
     if (state.page !== 'game') window.removeEventListener('keydown', gameHandler);
 
-
-    // if (state.page && (state.page === 'home' || state.page === 'about')) {
-    //     common.clearMain();
-
-    //     switch (state.page) {
-    //         case 'home': {
-    //             state.page = 'home';
-    //             common.renderView(state.page, homeView.renderHome());
-    //             break;
-    //         }
-    //         case 'about': {
-    //             state.page = 'about';
-    //             common.renderView(state.page, aboutView.renderAbout());
-    //             break;
-    //         }
-    //     }
-    // } else if (state.page.includes('search')) {
-    //     let params = new URLSearchParams(state.page.replace('search', ''));
-
-    //     let query = params.get('q');
-    //     let page = (params.get('page')) ? parseInt(params.get('page'), 10) : 1;
-    //     console.log(query + ' - ' + page);
-    //     if (query) searchHandler(query, page);
-    // } else if (state.page === '') {
-    //     state.page = 'home';
-    //     common.clearMain();
-    //     common.elements.main.classList.add('home');
-    //     common.renderView('home', homeView.renderHome());
-    // }
+    //Render Pages
     if (state.page) {
         common.clearMain();
-        if (state.page === 'home' || state.page === 'about') {
+
+        if (state.page === 'home') {
             // Render View
-            common.renderView(state.page, window[`${state.page}View`].window[`render${state.page.charAt(0).toUpperCase()}${state.page.slice(1)}`]);
+            common.renderView(state.page, homeView.renderHome());
+        } else if (state.page === 'about') {
+            // Render View
+            common.renderView(state.page, aboutView.renderAbout());
         } else if (state.page.includes('search')) {
             //Get parameters
             let params = new URLSearchParams(state.page.replace('search', ''));
@@ -204,11 +180,6 @@ const navigationControl = () => {
             //Call Search Handler
             if (query) searchHandler(query, page);
         }
-        //If page is empty
-    } else if (state.page === '') {
-        state.page = 'home';
-        common.clearMain();
-        common.renderView('home', homeView.renderHome());
     }
 }
 
@@ -216,7 +187,6 @@ const resetPage = () => {
     state.page = 'home';
     window.location.hash = 'home';
     common.clearMain();
-    common.elements.main.classList.add('home');
     common.renderView('home', homeView.renderHome());
 }
 
