@@ -2,7 +2,7 @@
     padding: 1.5rem 13rem;
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: 90%;
 
     &__header {
         display: flex;
@@ -33,6 +33,9 @@
         font-size: 2.8rem;
         height: 80%;
         overflow-y: hidden;
+        scroll-behavior: smooth;
+
+        line-height: 3.3rem;
     }
 
     &__alert {
@@ -46,6 +49,10 @@
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
+    }
+
+    &__copyright {
+        margin-top: 2rem;
     }
 }
 

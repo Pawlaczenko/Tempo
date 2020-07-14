@@ -14,36 +14,40 @@ window.state = state;
  * CONTROL SEARCH
  */
 
-const controlSearch = async (id) => {
-    console.log(id);
+const controlSearch = id => {
+    // console.log(id);
     const query = searchView.getInput(id);
     if (query) {
-        const site = window.location.hash = 'search';
-        state.page = 'search';
+        state.page = `search?q=${query}&page=${1}`;
+        window.location.hash = state.page;
+    }
+}
 
-        //Create search state
-        state.search = new Search(query);
-        //Prepere UI for results
-        common.clearMain();
-        common.renderLoader(common.elements.main);
-        try {
-            await state.search.getResults();
-            common.deleteLoader();
-            searchView.clearInput();
-            if (state.page === 'search') {
-                common.renderView('search', searchView.renderResults(state.search.results, state.search.query));
-                addQueries();
-            }
-        } catch (error) {
-            searchView.renderError(state.search.query);
+const searchHandler = async (query, page) => {
+    //Create search state
+    state.search = new Search(query);
+    //Prepere UI for results
+    common.clearMain();
+    common.renderLoader(common.elements.main);
+    try {
+        await state.search.getResults(page);
+        state.search.calcSites();
+        console.log(state.search.results);
+        common.deleteLoader();
+        searchView.clearInput();
+        if (state.page.includes('search')) {
+            common.renderView('search', searchView.renderResults(state.search.results, state.search.query, page, state.search.sitesQnt));
+            addQueries();
         }
+    } catch (error) {
+        searchView.renderError(state.search.query);
     }
 }
 
 window.addEventListener('submit', e => {
     e.preventDefault();
     controlSearch(e.target.id.substr(2));
-})
+});
 
 // [common.elements.searchForm, common.elements.searchFormA].forEach(item => {
 //     console.log(item.classList);
@@ -75,6 +79,11 @@ const navigationControl = () => {
                 break;
             }
         }
+    } else if (site.includes('search')) {
+        let query = site.substring(site.indexOf('?q=') + 3, site.lastIndexOf('&page='));
+        query = query.replace('%20', ' ');
+        let page = parseInt(site.substring(site.lastIndexOf('&page=') + 6));
+        searchHandler(query, page);
     } else if (site === '') {
         state.page = 'home';
         common.clearMain();
@@ -99,9 +108,13 @@ window.addEventListener('load', resetPage);
  * Game Controller
  */
 
-const gameHandler = e => {
+const gameHandler = (e) => {
+    e.preventDefault();
     let key = e.key;
     if (state.game.ignore(key)) {
+        // if (state.game.checkForEnter() && key !== 'Backspace') {
+        //     state.line++;
+        // }
         if (key === 'Enter' && state.game.checkForEnter()) {
             gameView.colorLetter(state.game.index, 1);
             state.game.changeIndex(1);
@@ -110,6 +123,9 @@ const gameHandler = e => {
             state.game.changeIndex(-1);
             gameView.activateLetter(state.game.index);
             gameView.deleteLetter(state.game.index);
+            // if (state.game.checkForEnter()) {
+            //     state.line--;
+            // }
         } else {
             if (state.game.checkLetter(key)) {
                 gameView.colorLetter(state.game.index, 1);
@@ -120,30 +136,34 @@ const gameHandler = e => {
             }
         }
         gameView.activateLetter(state.game.index);
+        // gameView.scrollGame(state.line);
     }
 }
 
-const gameControl = song => {
+const gameControl = async song => {
+    console.log(song);
     state.hash = 'game';
     window.location.hash = state.hash;
-    state.game = new Game(song.id, song.name, song.artist, song.lyrics);
-
-    // let w = song.lyrics;
-    // w = w.replace(/\n/ig, ' &crarr; ');
-    // w = w.replace(/(^\s*)|(\s*$)/gi, "");
-    // w = w.replace(/[ ]{2,}/gi, " ");
-
-    // console.log(w.split(' '));
-
-    //Render View
+    state.game = new Game(song.track_id, song.track_name, song.artist_name);
     common.clearMain();
-    common.renderView('game', gameView.renderGame(state.game));
-    gameView.activateLetter(0);
-    window.addEventListener('keydown', gameHandler);
-    window.addEventListener('keypress', intitGame, { once: true });
+    common.renderLoader(common.elements.main);
+    try {
+        console.log('tutaj w try');
+        await state.game.getLyrics();
+        //Render View
+        common.deleteLoader();
+        common.renderView('game', gameView.renderGame(state.game));
+        gameView.activateLetter(0);
+        state.line = 0;
+        window.addEventListener('keypress', intitGame, { once: true });
+        window.addEventListener('keydown', gameHandler);
+    } catch (error) {
+        console.log('pumperni' + error);
+    }
 }
 
-const intitGame = () => {
+const intitGame = (e) => {
+    e.preventDefault();
     gameView.deleteAlert();
     state.timer = window.setInterval(() => {
         gameView.updateTime(state.game.timer());
@@ -154,12 +174,13 @@ const intitGame = () => {
 const addQueries = () => {
     document.querySelector('.search__results').addEventListener('click', e => {
         const target = e.target.closest('.song');
-        if (target) {
+        if (target && !target.classList.contains('song--disabled')) {
             const id = target.dataset.goto;
+            console.log(id);
             const chosen = state.search.results.find(e => {
-                return e.id === id;
+                return e.track.track_id === parseInt(id, 10);
             });
-            gameControl(chosen);
+            gameControl(chosen.track);
         }
     });
 }

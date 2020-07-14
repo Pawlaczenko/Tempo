@@ -1,7 +1,7 @@
 import { elements } from './base.js';
 
 const formatLyrics = lyrics => {
-    // lyrics = lyrics.replace(/\n/ig, ' <span class="enter">&crarr;</span><br /> ');
+    lyrics = lyrics.slice(0, -75);
     let markup = '';
     lyrics.forEach((e, i) => {
         let letter = e;
@@ -22,6 +22,8 @@ export const renderGame = song => {
     <div class="game__lyrics">
         ${formatLyrics(song.letters)}
     </div>
+    <div class="game__copyright">${song.copyright}</div>
+    <script src="${song.tracking}"></script>
     `;
 
     return markup;
@@ -52,6 +54,7 @@ export const activateLetter = index => {
         prevLetter.classList.remove('letter--active');
     }
     letter.classList.add('letter--active');
+    scrollGame();
 }
 
 export const deleteAlert = () => {
@@ -61,4 +64,18 @@ export const deleteAlert = () => {
 export const updateTime = (time) => {
     let clock = `${(time[0] < 10) ? '0' : ''}${time[0]}:${(time[1] < 10) ? '0' : ''}${time[1]}`;
     document.querySelector('.game__timer').innerHTML = clock;
+}
+
+const scrollGame = (line = 0, lineHeight = 33) => {
+    // const scrollOptions = {
+    //     left: 0,
+    //     top: lineHeight * line,
+    //     behavior: 'smooth'
+    // }
+    document.querySelector('.letter--active').scrollIntoView({
+        behavior: 'smooth',
+        block: "center",
+        inline: "nearest"
+    });
+
 }

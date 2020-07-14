@@ -7,15 +7,17 @@
     }
 
     &__results {
+        @include fadeInAnim(0.2s);
         overflow-y: auto;
-        max-height: 51vh;
+        max-height: 50vh;
         margin-top: 4rem;
         padding-right: 4rem;
 
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
         column-gap: 6rem;
-        row-gap: 6rem;
+        row-gap: 5rem;
+        // border-left: 1px solid $color-primary;
 
         &::-webkit-scrollbar-track {
             -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
@@ -43,6 +45,7 @@
         position: absolute;
         bottom: 3.7rem;
         left: 50%;
+        z-index: 100;
 
         transform: translateX(-50%);
     }
@@ -54,7 +57,6 @@
     color: $color-grey-3;
     position: relative;
     transition: all 0.2s;
-    @include fadeInAnim(0.2s);
 
     &::before,
     &::after {
@@ -79,10 +81,15 @@
         border-bottom: 1px solid rgba($color: $color-grey-3, $alpha: 0.5);
     }
 
+    &--disabled {
+        opacity: 0.5 !important;
+        cursor: not-allowed;
+    }
+
     &__album-cover {
-        min-width: 13rem;
-        max-width: 13rem;
-        height: 13rem;
+        min-width: 12rem;
+        max-width: 12rem;
+        height: 12rem;
         position: relative;
         overflow: hidden;
 
@@ -93,8 +100,8 @@
             position: absolute;
             left: 0;
             top: 0;
-            width: 13rem;
-            height: 13rem;
+            width: 12rem;
+            height: 12rem;
             border: 0.6rem solid $color-primary;
             background-color: rgba($color: $color-primary, $alpha: 0.6);
 
@@ -125,11 +132,12 @@
 
     &__info {
         margin-left: 1.8rem;
+
         display: grid;
         grid-template-rows: auto auto 1fr;
         align-items: flex-end;
 
-        padding: 0.5rem 0;
+        padding: 0.5rem 0.5rem 0.5rem 0;
     }
 
     &__title {
@@ -139,7 +147,7 @@
     }
 
     &__artist {
-        font-size: 1.9rem;
+        font-size: 1.8rem;
         font-weight: 200;
     }
 
@@ -149,7 +157,7 @@
         color: $color-primary;
     }
 
-    &:hover {
+    &:not(.song--disabled):hover {
         background-color: $color-primary;
         color: $color-white;
         box-shadow: 4px 4px 24px -6px rgba(0, 0, 0, 0.5);
@@ -160,26 +168,26 @@
         }
     }
 
-    &:hover &__title {
+    &:not(.song--disabled):hover &__title {
         color: white;
     }
 
-    &:hover &__words {
+    &:not(.song--disabled):hover &__words {
         color: white;
     }
 
-    &:hover &__icon {
+    &:not(.song--disabled):hover &__icon {
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);
     }
 
-    &:hover &__album-cover {
+    &:not(.song--disabled):hover &__album-cover {
         &::after {
             opacity: 1;
         }
     }
 
-    &:hover &__img {
-        transform: scale(0.95);
+    &:not(.song--disabled):hover &__img {
+        transform: scale(0.97);
     }
 }

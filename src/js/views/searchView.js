@@ -13,11 +13,10 @@ const countWords = lyrics => {
     return lyrics.split(' ').length;
 }
 
-const limitTitle = (title, limit = 16) => {
+const limitString = (title, limit = 16) => {
     const newTitle = [];
     if (title.length >= limit) {
         title = title.split(' ');
-        console.log(title[0]);
         if (title[0].length > 11) {
             return `${title[0].slice(0, 10)}...`;
         }
@@ -39,32 +38,75 @@ const checkImage = (img) => {
 
 const renderSong = song => {
     const markup = `
-    <div class="song" data-goto="${song.id}">
+    <div class="song ${(song.has_lyrics) ? '' : 'song--disabled'}" data-goto="${song.track_id}">
         <figure class="song__album-cover">
-            <img src="${checkImage(song.album_art)}" alt="Redbone" class="song__img">
+            <img src="src/img/favico.png" alt="${song.track_name}" class="song__img">
             <svg class="song__icon">
                 <use xlink:href="./assets/img/_sprite.svg#icon-play"></use>
             </svg>
         </figure>
         <div class="song__info">
-            <p class="song__title">${limitTitle(song.name)}</p>
-            <p class="song__artist">by ${song.artist}</p>
-            <p class="song__words">${countWords(song.lyrics)} words</p>
+            <p class="song__title">${limitString(song.track_name)}</p>
+            <p class="song__artist">by ${limitString(song.artist_name, 20)}</p>
         </div>
     </div>
     `;
     return markup;
 }
 
+// const renderSong = song => {
+//     const markup = `
+//     <div class="song" data-goto="${song.id}">
+//         <figure class="song__album-cover">
+//             <img src="${checkImage(song.album_art)}" alt="Redbone" class="song__img">
+//             <svg class="song__icon">
+//                 <use xlink:href="./assets/img/_sprite.svg#icon-play"></use>
+//             </svg>
+//         </figure>
+//         <div class="song__info">
+//             <p class="song__title">${limitTitle(song.name)}</p>
+//             <p class="song__artist">by ${song.artist}</p>
+//             <p class="song__words">${countWords(song.lyrics)} words</p>
+//         </div>
+//     </div>
+//     `;
+//     return markup;
+// }
+
 const renderAllSongs = data => {
     let songs = '';
     data.forEach(element => {
-        songs += renderSong(element);
+        songs += renderSong(element.track);
     });
     return songs;
 }
 
-export const renderResults = (data, query) => {
+const renderPagination = (currentPage = 1, pagesQnt, query) => {
+    const url = `search?q=${query}&page=`;
+    const markup = `
+    <li class="pagination__item pagination__item--left">
+        <a href='#${url}${currentPage > 1 ? currentPage - 1 : 1}'>
+            <svg class="pagination__icon">
+                <use xlink:href="./assets/img/_sprite.svg#icon-left"></use>
+            </svg>
+        </a>
+    </li>
+    <li class="pagination__item pagination__item--first"><a href='#${url}1'>&mldr;</a></li>
+
+    <li class="pagination__item pagination__item--last"><a href='#${url}${pagesQnt}'>&mldr;</a></li>
+    <li class="pagination__item pagination__item--right">
+        <a href='#${url}${currentPage < pagesQnt ? currentPage + 1 : currentPage}'>    
+            <svg class="pagination__icon">
+                    <use xlink:href="./assets/img/_sprite.svg#icon-right"></use>
+            </svg>
+        </a>
+    </li>
+    `;
+
+    return markup;
+}
+
+export const renderResults = (data, query, page, pagesQnt) => {
     const markup = `
         <h2 class="search__heading heading--2">
             Results for <span class="heading--highlight heading--underline">${query}</span>:
@@ -72,7 +114,13 @@ export const renderResults = (data, query) => {
         <section class="search__results">
             ${renderAllSongs(data)}
         </section>
+        <div class="search__pagination">
+            <ul class="pagination">
+                ${renderPagination(page, pagesQnt, query)}
+            </ul>
+        </div>
     `;
+
     return markup;
 }
 

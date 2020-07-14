@@ -1,13 +1,29 @@
+import axios from 'axios';
+
 export default class Game {
-    constructor(id, title, artist, lyrics) {
+    constructor(id, title, artist) {
         this.id = id;
         this.title = title;
         this.artist = artist;
-        this.lyrics = lyrics;
         this.index = 0;
         this.time = [0, 0];
+    }
 
-        this.letters = this.lyrics.split('');
+    async getLyrics() {
+        try {
+            console.log('game lyrics async in module')
+            const apiKey = '76a84f6bc199d7279cd3d04bd79f5c9f';
+            const res = await axios(`https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.lyrics.get?apikey=${apiKey}&track_id=${this.id}`);
+            console.log(res);
+            this.lyrics = res.data.message.body.lyrics.lyrics_body;
+            this.tracking = res.data.message.body.lyrics.pixel_tracking_url;
+            this.copyright = res.data.message.body.lyrics.lyrics_copyright;
+            this.letters = this.lyrics.split('');
+            console.log(this.lyrics);
+        } catch (error) {
+            console.log(error);
+            return -1;
+        }
     }
 
     changeIndex(n) {
