@@ -15,9 +15,10 @@
         margin: 0 0.2rem;
 
         &:hover,
-        &--current {
+        &--current a {
             background-color: $color-primary;
-            color: $color-white;
+            color: $color-white !important;
+            border-radius: 5px;
         }
 
         a {

@@ -81,7 +81,32 @@ const renderAllSongs = data => {
     return songs;
 }
 
+const renderPages = (url, currentPage, pagesQnt, pgsInPagin = 5) => {
+    let markup = '';
+    let itStart = currentPage - 2;
+    let itEnd = currentPage + 2;
+    if (itStart <= 0) {
+        itStart = 1;
+        itEnd = 5;
+    }
+    if (itEnd > pagesQnt) {
+        itEnd = pagesQnt;
+    }
+    for (let i = itStart; i <= itEnd; i++) {
+        markup += `<li class="pagination__item ${i === currentPage ? 'pagination__item--current' : ''}"><a href="#${url}${i}">${i}</a></li>`
+    }
+    // const markup = `
+    //     <li class="pagination__item pagination__item--current"><a href="${url}${currentPage - 2}">${currentPage - 2}</a></li>
+    //     <li class="pagination__item pagination__item--current"><a href="${url}${currentPage - 1}">${currentPage - 1}</a></li>
+    //     <li class="pagination__item pagination__item--current"><a href="${url}${currentPage}">${currentPage}</a></li>
+    //     <li class="pagination__item pagination__item--current"><a href="${url}${currentPage + 1}">${currentPage + 1}</a></li>
+    //     <li class="pagination__item pagination__item--current"><a href="${url}${currentPage + 2}">${currentPage + 2}</a></li>
+    // `;
+    return markup;
+}
+
 const renderPagination = (currentPage = 1, pagesQnt, query) => {
+    console.log(pagesQnt);
     const url = `search?q=${query}&page=`;
     const markup = `
     <li class="pagination__item pagination__item--left">
@@ -92,7 +117,7 @@ const renderPagination = (currentPage = 1, pagesQnt, query) => {
         </a>
     </li>
     <li class="pagination__item pagination__item--first"><a href='#${url}1'>&mldr;</a></li>
-
+    ${renderPages(url, currentPage, pagesQnt)}
     <li class="pagination__item pagination__item--last"><a href='#${url}${pagesQnt}'>&mldr;</a></li>
     <li class="pagination__item pagination__item--right">
         <a href='#${url}${currentPage < pagesQnt ? currentPage + 1 : currentPage}'>    
