@@ -35,12 +35,14 @@ const searchHandler = async (query, page) => {
         console.log(state.search.results);
         common.deleteLoader();
         searchView.clearInput();
+        console.log(state.page);
         if (state.page.includes('search')) {
             common.renderView('search', searchView.renderResults(state.search.results, state.search.query, page, state.search.sitesQnt));
             addQueries();
         }
     } catch (error) {
-        searchView.renderError(state.search.query);
+        console.log(error);
+        // searchView.renderError(state.search.query);
     }
 }
 
@@ -60,31 +62,33 @@ window.addEventListener('submit', e => {
  */
 
 const navigationControl = () => {
-    const site = window.location.hash.replace('#', '');
+    state.page = window.location.hash.replace('#', '');
     if (state.timer) window.clearInterval(state.timer);
-    if (site !== 'game') window.removeEventListener('keydown', gameHandler);
+    if (state.page !== 'game') window.removeEventListener('keydown', gameHandler);
 
-    if (site && (site === 'home' || site === 'about')) {
+    if (state.page && (state.page === 'home' || state.page === 'about')) {
         common.clearMain();
 
-        switch (site) {
+        switch (state.page) {
             case 'home': {
                 state.page = 'home';
-                common.renderView(site, homeView.renderHome());
+                common.renderView(state.page, homeView.renderHome());
                 break;
             }
             case 'about': {
                 state.page = 'about';
-                common.renderView(site, aboutView.renderAbout());
+                common.renderView(state.page, aboutView.renderAbout());
                 break;
             }
         }
-    } else if (site.includes('search')) {
-        let query = site.substring(site.indexOf('?q=') + 3, site.lastIndexOf('&page='));
-        query = query.replace('%20', ' ');
-        let page = parseInt(site.substring(site.lastIndexOf('&page=') + 6));
-        searchHandler(query, page);
-    } else if (site === '') {
+    } else if (state.page.includes('search')) {
+        let params = new URLSearchParams(state.page.replace('search', ''));
+
+        let query = params.get('q');
+        let page = (params.get('page')) ? parseInt(params.get('page'), 10) : 1;
+        console.log(query + ' - ' + page);
+        if (query) searchHandler(query, page);
+    } else if (state.page === '') {
         state.page = 'home';
         common.clearMain();
         common.elements.main.classList.add('home');
@@ -109,12 +113,8 @@ window.addEventListener('load', resetPage);
  */
 
 const gameHandler = (e) => {
-    // e.preventDefault();
     let key = e.key;
     if (state.game.ignore(key)) {
-        // if (state.game.checkForEnter() && key !== 'Backspace') {
-        //     state.line++;
-        // }
         if (key === 'Enter' && state.game.checkForEnter()) {
             gameView.colorLetter(state.game.index, 1);
             state.game.changeIndex(1);
@@ -123,9 +123,6 @@ const gameHandler = (e) => {
             state.game.changeIndex(-1);
             gameView.activateLetter(state.game.index);
             gameView.deleteLetter(state.game.index);
-            // if (state.game.checkForEnter()) {
-            //     state.line--;
-            // }
         } else {
             if (state.game.checkLetter(key)) {
                 gameView.colorLetter(state.game.index, 1);
@@ -136,7 +133,6 @@ const gameHandler = (e) => {
             }
         }
         gameView.activateLetter(state.game.index);
-        // gameView.scrollGame(state.line);
     }
 }
 
@@ -163,7 +159,6 @@ const gameControl = async song => {
 }
 
 const intitGame = (e) => {
-    // e.preventDefault();
     gameView.deleteAlert();
     state.timer = window.setInterval(() => {
         gameView.updateTime(state.game.timer());
@@ -184,8 +179,3 @@ const addQueries = () => {
         }
     });
 }
-
-
-// common.elements.header.addEventListener('click', e => {
-//     navigationControl(e.target);
-// });
