@@ -100,7 +100,7 @@ const gameHandler = (e) => {
             //Change index
             state.game.changeIndex(-1);
             //Set cursor
-            gameView.activateLetter(state.game.index);
+            // gameView.activateLetter(state.game.index);
             //Delete letter
             gameView.deleteLetter(state.game.index);
 

@@ -16,12 +16,21 @@
     &__title {
         font-size: 2.2rem;
         font-weight: 200;
+        overflow: hidden;
+
+        width: 30%;
+        margin-right: auto;
+        // white-space: nowrap;
     }
 
     &__timer {
         font-size: 3.5rem;
         font-weight: 200;
         color: $color-primary;
+        width: 30%;
+        margin-left: auto;
+
+        text-align: right;
     }
 
     &__lyrics {
@@ -42,8 +51,10 @@
         font-weight: bold;
         color: $color-primary;
         font-size: 2.6rem;
-
+        flex: 1;
         animation: flash 1s infinite both;
+
+        @include flex-center-center;
 
         // position: absolute;
         // left: 50%;

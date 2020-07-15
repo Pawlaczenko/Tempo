@@ -68,7 +68,7 @@
 
         width: 3rem;
         height: 3rem;
-        border-right: 1px solid rgba($color: $color-grey-3, $alpha: 0.5);
+        border-right: 2px solid rgba($color: $color-grey-3, $alpha: 0.5);
     }
 
     &::before {
@@ -137,11 +137,24 @@
         grid-template-rows: auto auto 1fr;
         align-items: flex-end;
 
-        padding: 0.5rem 0.5rem 0.5rem 0;
+        padding: 0.5rem 1rem 0.5rem 0;
+        position: relative;
+    }
+
+    &__explicit {
+        position: absolute;
+        width: 4.5rem;
+        right: 0.5rem;
+        bottom: 0.3rem;
+        opacity: 0.75;
+    }
+
+    &__warning {
+        width: 100%;
     }
 
     &__title {
-        font-size: 2.9rem;
+        font-size: 2.8rem;
         line-height: 1;
         margin-bottom: 1rem;
     }

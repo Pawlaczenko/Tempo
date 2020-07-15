@@ -36,6 +36,10 @@ const checkImage = (img) => {
     return img;
 }
 
+const isExplicit = bool => {
+    return (bool) ? `<img src="src/img/explicit.png" alt="explicit language" class="song__warning">` : '';
+}
+
 const renderSong = song => {
     const markup = `
     <div class="song ${(song.has_lyrics) ? '' : 'song--disabled'}" data-goto="${song.track_id}">
@@ -49,6 +53,9 @@ const renderSong = song => {
             <p class="song__title">${limitString(song.track_name)}</p>
             <p class="song__artist">by ${limitString(song.artist_name, 20)}</p>
         </div>
+        <figure class="song__explicit">
+            ${isExplicit(song.explicit)}
+        </figure>
     </div>
     `;
     return markup;
