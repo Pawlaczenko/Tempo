@@ -35,7 +35,6 @@ export const renderLoader = (parent) => {
     `;
 
     parent.insertAdjacentHTML('afterbegin', markup);
-    console.log('created loader');
 }
 
 export const deleteLoader = () => {
@@ -43,6 +42,4 @@ export const deleteLoader = () => {
     if (loader) {
         loader.parentElement.removeChild(loader);
     }
-
-    console.log('deleted loader');
 }

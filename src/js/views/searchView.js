@@ -113,7 +113,6 @@ const renderPages = (url, currentPage, pagesQnt, pgsInPagin = 5) => {
 }
 
 const renderPagination = (currentPage = 1, pagesQnt, query) => {
-    console.log(pagesQnt);
     const url = `search?q=${query}&page=`;
     const markup = `
     <li class="pagination__item pagination__item--left">

@@ -1,10 +1,12 @@
 import './../sass/main.scss';
 import Search from './models/Search';
 import Game from './models/Game';
+import Summary from './models/Summary';
 import * as searchView from './views/searchView';
 import * as homeView from './views/homeView';
 import * as aboutView from './views/aboutView';
 import * as gameView from './views/gameView';
+import * as summaryView from './views/summaryView';
 import * as common from './views/base';
 
 
@@ -116,10 +118,21 @@ const gameHandler = (e) => {
                 state.game.changeIndex(1);
             }
         }
-        //Set cursor
-        gameView.activateLetter(state.game.index);
         gameView.updateProgressBar(state.game.getPercentage());
+        if (state.game.finish()) {
+            finishTest();
+        } else {
+            //Set cursor
+            gameView.activateLetter(state.game.index);
+        }
     }
+}
+
+const finishTest = () => {
+    window.clearInterval(state.timer);
+    window.location.hash = 'summary';
+
+    state.summary = new Summary(this.state.game);
 }
 
 const gameControl = async song => {

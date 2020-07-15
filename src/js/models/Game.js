@@ -13,7 +13,6 @@ export default class Game {
 
     async getLyrics() {
         try {
-            console.log('game lyrics async in module')
             const apiKey = '76a84f6bc199d7279cd3d04bd79f5c9f';
             const res = await axios(`https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.lyrics.get?apikey=${apiKey}&track_id=${this.id}`);
 
@@ -75,10 +74,13 @@ export default class Game {
 
     popError() {
         let index = this.errors.findIndex(e => e.index === this.index);
-        console.log(index);
         if (index !== -1) {
             this.errors[index].state = 'corrected';
         }
+    }
+
+    finish() {
+        return (this.index === this.letters.length);
     }
 
     // createCheckpoint() {
