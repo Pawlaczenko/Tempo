@@ -32,7 +32,7 @@ const limitString = (title, limit = 16) => {
 }
 
 const checkImage = (img) => {
-    if (img === "https://cdn.ksoft.si/images/Logo1024%20-%20W.png") return 'src/img/favico.png';
+    if (!img) return 'src/img/favico.png';
     return img;
 }
 
@@ -40,7 +40,7 @@ const renderSong = song => {
     const markup = `
     <div class="song ${(song.has_lyrics) ? '' : 'song--disabled'}" data-goto="${song.track_id}">
         <figure class="song__album-cover">
-            <img src="src/img/favico.png" alt="${song.track_name}" class="song__img">
+            <img src="${checkImage(song.album_img)}" alt="${song.track_name}" class="song__img">
             <svg class="song__icon">
                 <use xlink:href="./assets/img/_sprite.svg#icon-play"></use>
             </svg>

@@ -7,6 +7,7 @@ import * as aboutView from './views/aboutView';
 import * as gameView from './views/gameView';
 import * as common from './views/base';
 
+
 const state = {};
 window.state = state;
 
@@ -35,6 +36,7 @@ const searchHandler = async (query, page) => {
     try {
         //Get search results
         await state.search.getResults(page);
+        await state.search.getAlbumArts();
         //Get number of sites
         state.search.calcSites();
         console.log(state.search.results);
