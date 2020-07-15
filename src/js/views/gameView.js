@@ -1,7 +1,6 @@
 import { elements } from './base.js';
 
 const formatLyrics = lyrics => {
-    lyrics = lyrics.slice(0, -75);
     let markup = '';
     lyrics.forEach((e, i) => {
         let letter = e;
@@ -19,9 +18,11 @@ export const renderGame = song => {
         <p class="game__alert">START TYPING</p>
         <time class="game__timer" data-time='00:00'>00:00</time>
     </div>
+    <div class="game__progressBar"></div>
     <div class="game__lyrics">
         ${formatLyrics(song.letters)}
     </div>
+    <div class="game__progressBar"></div>
     <div class="game__copyright">${song.copyright}</div>
     <script src="${song.tracking}"></script>
     `;
@@ -64,6 +65,18 @@ export const deleteAlert = () => {
 export const updateTime = (time) => {
     let clock = `${(time[0] < 10) ? '0' : ''}${time[0]}:${(time[1] < 10) ? '0' : ''}${time[1]}`;
     document.querySelector('.game__timer').innerHTML = clock;
+}
+
+export const updateProgressBar = (percentage) => {
+    const bar = document.querySelectorAll('.game__progressBar');
+    for (let b of bar) {
+        b.style.backgroundImage = `linear-gradient(
+        90deg,
+        rgba(240, 138, 92, 1) 0%,
+        rgba(240, 138, 92, 1) ${percentage}%,
+        rgba(90, 103, 125, 0.21) ${percentage}%)`;
+    }
+
 }
 
 const scrollGame = (line = 0, lineHeight = 33) => {

@@ -116,6 +116,7 @@ const gameHandler = (e) => {
         }
         //Set cursor
         gameView.activateLetter(state.game.index);
+        gameView.updateProgressBar(state.game.getPercentage());
     }
 }
 

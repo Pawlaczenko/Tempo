@@ -9,7 +9,7 @@
         align-items: center;
         justify-content: space-between;
         padding: 0 1.5rem;
-
+        margin-bottom: 1rem;
         position: relative;
     }
 
@@ -35,9 +35,7 @@
 
     &__lyrics {
         font-family: "Courier New", Courier, monospace;
-        margin-top: 1rem;
-        border-top: 2px solid $color-grey-3;
-        border-bottom: 2px solid $color-grey-3;
+        // border-bottom: 3px solid rgba($color-grey-3, 0.21);
         padding: 1rem 1.5rem;
         font-size: 2.8rem;
         height: 80%;
@@ -45,6 +43,20 @@
         scroll-behavior: smooth;
 
         line-height: 3.3rem;
+    }
+
+    &__progressBar {
+        width: 100%;
+        height: 3px;
+        // background: rgb(240, 138, 92);
+        background-image: linear-gradient(
+            90deg,
+            rgba(240, 138, 92, 1) 0%,
+            rgba(240, 138, 92, 1) 0%,
+            rgba(90, 103, 125, 0.21) 0%
+        );
+
+        transition: all 0.2s;
     }
 
     &__alert {
