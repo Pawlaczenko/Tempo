@@ -7,6 +7,7 @@ export default class Game {
         this.artist = artist;
         this.index = 0;
         this.time = [0, 0];
+        this.errors = [];
     }
 
     async getLyrics() {
@@ -57,5 +58,23 @@ export default class Game {
 
     getPercentage() {
         return (this.index / this.letters.length) * 100;
+    }
+
+    putError() {
+        if (!this.errors.some(e => e.index === this.index)) {
+            this.errors.push({
+                index: this.index,
+                state: 'uncorrected'
+            });
+        }
+
+    }
+
+    popError() {
+        let index = this.errors.findIndex(e => e.index === this.index);
+        console.log(index);
+        if (index !== -1) {
+            this.errors[index].state = 'corrected';
+        }
     }
 }   

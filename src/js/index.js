@@ -92,6 +92,7 @@ const gameHandler = (e) => {
     //Check if key is not ignored
     if (state.game.ignore(key)) {
         if (key === 'Enter' && state.game.checkForEnter()) {
+            state.game.popError();
             //Color green
             gameView.colorLetter(state.game.index, 1);
             //change index
@@ -100,7 +101,6 @@ const gameHandler = (e) => {
             //Change index
             state.game.changeIndex(-1);
             //Set cursor
-            // gameView.activateLetter(state.game.index);
             //Delete letter
             gameView.deleteLetter(state.game.index);
 
@@ -108,9 +108,11 @@ const gameHandler = (e) => {
         } else {
             if (state.game.checkLetter(key)) {
                 gameView.colorLetter(state.game.index, 1);
+                state.game.popError();
                 state.game.changeIndex(1);
             } else {
                 gameView.colorLetter(state.game.index, 0);
+                state.game.putError();
                 state.game.changeIndex(1);
             }
         }
@@ -128,13 +130,14 @@ const gameControl = async song => {
 
     //Prepare the UI
     common.clearMain();
-    common.renderLoader(common.elements.main);
+    common.renderLoader(common.elements.container);
     try {
         //Get Lyrics
         await state.game.getLyrics();
         //Render View
-        common.deleteLoader();
+
         common.renderView('game', gameView.renderGame(state.game));
+        common.deleteLoader();
         //Render cursor
         gameView.activateLetter(0);
         //Add event listeners

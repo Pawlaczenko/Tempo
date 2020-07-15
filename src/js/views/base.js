@@ -5,7 +5,8 @@ export const elements = {
     searchBar: document.querySelector('.search-bar__input--header'),
     main: document.querySelector('.main'),
     results: document.querySelector('.search__results'),
-    header: document.querySelector('.header')
+    header: document.querySelector('.header'),
+    container: document.querySelector('.container')
 }
 
 export const clearMain = () => {
@@ -34,6 +35,7 @@ export const renderLoader = (parent) => {
     `;
 
     parent.insertAdjacentHTML('afterbegin', markup);
+    console.log('created loader');
 }
 
 export const deleteLoader = () => {
@@ -42,4 +44,5 @@ export const deleteLoader = () => {
         loader.parentElement.removeChild(loader);
     }
 
+    console.log('deleted loader');
 }

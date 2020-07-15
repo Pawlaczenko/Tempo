@@ -6,6 +6,7 @@
     width: 5rem;
     height: 5rem;
     border: 0.5rem solid $color-primary;
+    z-index: 10000;
 
     animation: spin 1s infinite;
 }
