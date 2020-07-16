@@ -70,10 +70,12 @@ export default class Summary {
                 label: 'Uncorrected Errors',
                 data: uncArray,
                 backgroundColor: '#6A7588',
+                barPercentage: 0.6
             }, {
                 label: 'Corrected Errors',
                 data: corArray,
                 backgroundColor: 'rgba(239, 131, 84,1)',
+                barPercentage: 0.6
             }]
         }
     }

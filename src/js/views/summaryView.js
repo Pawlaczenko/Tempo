@@ -53,13 +53,13 @@ export const renderSummary = (obj) => {
                 <canvas id="wpmChart" class="summary__canvas" role="img"></canvas>
             </div>
             <div class="summary__buttons">
-                <a class="cta cta--dark summary__cta">
+                <a class="cta cta--dark summary__cta" href="#game">
                     <svg class="cta__icon">
                         <use xlink:href="./assets/img/_sprite.svg#icon-enter"></use>
                     </svg>
                     <p class="cta__text">Try again</p>
                 </a>
-                <a class="cta cta--light">
+                <a class="cta cta--light" href="#home">
                     <svg class="cta__icon">
                         <use xlink:href="./assets/img/_sprite.svg#icon-home"></use>
                     </svg>

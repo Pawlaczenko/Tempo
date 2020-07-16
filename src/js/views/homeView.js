@@ -18,11 +18,11 @@ export const renderHome = () => {
         <span class="action__or">
             or
         </span>
-        <button class="action__cta cta cta--dark">
+        <button class="action__cta cta cta--dark" id="getTopTracks">
             <svg class="cta__icon">
                 <use xlink:href="./assets/img/_sprite.svg#icon-random"></use>
             </svg>
-            <p class="cta__text">Pick a random song</p>
+            <p class="cta__text">Get top songs in US</p>
         </button>
     </div>
     <figure class="container__background">

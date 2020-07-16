@@ -18,26 +18,29 @@ window.state = state;
  */
 
 const controlSearch = id => {
+    let hash = '';
     //Get query from input
-    const query = searchView.getInput(id);
-
-    if (query) {
-        //Set current Page
-        window.location.hash = `search?q=${query}&page=${1}`;
-
-        //onHashChange will do the rest
+    if (id === 'getTopTracks') {
+        window.location.hash = `search?t=topUS&page=${1}`;
+    } else {
+        const query = searchView.getInput(id);
+        if (query) {
+            hash = `search?q=${query}&page=${1}`;
+            window.location.hash = `search?q=${query}&page=${1}`;
+        }
     }
 }
 
-const searchHandler = async (query, page) => {
+const searchHandler = async (obj, page) => {
+    console.log(obj.type);
     //Create search state
-    state.search = new Search(query);
+    state.search = new Search(obj.query);
     //Prepere UI for results
     common.clearMain();
     common.renderLoader(common.elements.main);
     try {
         //Get search results
-        await state.search.getResults(page);
+        await state.search.getResults(page, obj.type);
         await state.search.getAlbumArts();
         //Get number of sites
         state.search.calcSites();
@@ -48,7 +51,7 @@ const searchHandler = async (query, page) => {
         searchView.clearInput();
         if (state.page.includes('search')) {
             //Render search views
-            common.renderView('search', searchView.renderResults(state.search.results, state.search.query, page, state.search.sitesQnt));
+            common.renderView('search', searchView.renderResults(state.search.results, state.search.query, page, state.search.sitesQnt, obj.type));
             //Add Event Listeners
             addSearchListeners();
         }
@@ -82,6 +85,12 @@ window.addEventListener('submit', e => {
     const id = e.target.id.substr(2);
     //Call Controller
     controlSearch(id);
+});
+
+common.elements.main.addEventListener('click', e => {
+    if (e.target && e.target.id === 'getTopTracks') {
+        controlSearch(e.target.id);
+    }
 });
 
 /**
@@ -194,7 +203,9 @@ const navigationControl = () => {
 
     //Clear timer and events if needed
     if (state.timer) window.clearInterval(state.timer);
-    if (state.page !== 'game') window.removeEventListener('keydown', gameHandler);
+    if (state.page !== 'game') {
+        window.removeEventListener('keydown', gameHandler);
+    }
 
     //Render Pages
     if (state.page) {
@@ -209,11 +220,17 @@ const navigationControl = () => {
         } else if (state.page.includes('search')) {
             //Get parameters
             let params = new URLSearchParams(state.page.replace('search', ''));
-            let query = params.get('q');
+
+            let parameters = {
+                query: (params.get('q')) ? params.get('q') : params.get('t'),
+                type: (params.get('q')) ? 'q' : 't'
+            }
+            console.log(parameters);
+
             let page = (params.get('page')) ? parseInt(params.get('page'), 10) : 1;
 
             //Call Search Handler
-            if (query) searchHandler(query, page);
+            if (parameters.query) searchHandler(parameters, page);
         } else if (state.page === 'summary') {
             summaryController();
         }

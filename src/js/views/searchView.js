@@ -112,8 +112,8 @@ const renderPages = (url, currentPage, pagesQnt, pgsInPagin = 5) => {
     return markup;
 }
 
-const renderPagination = (currentPage = 1, pagesQnt, query) => {
-    const url = `search?q=${query}&page=`;
+const renderPagination = (currentPage = 1, pagesQnt, query, type) => {
+    const url = (type === 'q') ? `search?q=${query}&page=` : `search?t=topUS&page=`;
     const markup = `
     <li class="pagination__item pagination__item--left">
         <a href='#${url}${currentPage > 1 ? currentPage - 1 : 1}'>
@@ -137,7 +137,7 @@ const renderPagination = (currentPage = 1, pagesQnt, query) => {
     return markup;
 }
 
-export const renderResults = (data, query, page, pagesQnt) => {
+export const renderResults = (data, query, page, pagesQnt, type) => {
     const markup = `
         <h2 class="search__heading heading--2">
             Results for <span class="heading--highlight heading--underline">${query}</span>:
@@ -147,7 +147,7 @@ export const renderResults = (data, query, page, pagesQnt) => {
         </section>
         <div class="search__pagination">
             <ul class="pagination">
-                ${renderPagination(page, pagesQnt, query)}
+                ${renderPagination(page, pagesQnt, query, type)}
             </ul>
         </div>
     `;

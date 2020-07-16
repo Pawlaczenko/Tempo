@@ -2,9 +2,14 @@
     padding: 0 10rem;
     margin-top: 5rem;
 
+    &__heading {
+        @include fadeInAnim(0s);
+    }
+
     &__artist {
         font-weight: 200;
         font-size: 2.1rem;
+        @include fadeInAnim(0s);
     }
 
     &__container {
@@ -18,6 +23,7 @@
         grid-area: table;
         width: 80%;
         margin-top: 5rem;
+        @include fadeInAnim(0.1s);
     }
 
     &__table {
@@ -55,6 +61,7 @@
     }
 
     &__chart {
+        @include fadeInAnim(0.2s);
         grid-area: chart;
         background-color: rgba($color-grey-1, 0.6);
         // display: flex;
@@ -65,16 +72,18 @@
     &__canvas {
         // width: 50%;
         // height: 100%;
+        @include fadeInAnim(0.4s);
     }
 
     &__buttons {
         grid-area: buttons;
-
+        @include fadeInAnim(0.3s);
         display: flex;
         margin-top: 4rem;
     }
 
     &__cta {
         margin-right: 2.5rem;
+        @include fadeInAnim(0.5s);
     }
 }
