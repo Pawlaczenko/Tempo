@@ -19,7 +19,9 @@ export default class Summary {
     }
 
     calculateNetWPM() {
-        this.wpm = Math.round(this.calculateGrossWPM() - this.getErrorRate());
+        let wpm = Math.round(this.calculateGrossWPM() - this.getErrorRate());
+        if (wpm < 0) wpm = 0;
+        this.wpm = wpm;
     }
 
     calculateAccuracy() {
