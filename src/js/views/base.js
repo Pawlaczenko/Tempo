@@ -22,6 +22,7 @@ const toggleActiveLink = view => {
 }
 
 export const renderView = (view, markup) => {
+    console.log(view);
     elements.main.classList.add(view);
     toggleActiveLink(view);
 

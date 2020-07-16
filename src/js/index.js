@@ -124,7 +124,7 @@ const gameHandler = (e) => {
 
         if (state.game.finish()) {
             window.clearInterval(state.timer);
-            summaryController();
+            window.location.hash = 'summary';
         } else {
             //Set cursor
             gameView.activateLetter(state.game.index);
@@ -170,13 +170,17 @@ const intitGame = (e) => {
  */
 
 const summaryController = () => {
-    window.location.hash = 'summary';
+
+    common.renderLoader(common.elements.container);
     state.summary = new Summary(state.game);
     state.summary.calculateNetWPM();
     state.summary.calculateAccuracy();
     state.summary.createChartData();
 
-    // common.renderView(state.page, homeView.renderHome());
+    common.renderView(state.page, summaryView.renderSummary(state.summary));
+    summaryView.renderChart(state.summary.chartData);
+    common.deleteLoader();
+
 }
 
 
@@ -210,6 +214,8 @@ const navigationControl = () => {
 
             //Call Search Handler
             if (query) searchHandler(query, page);
+        } else if (state.page === 'summary') {
+            summaryController();
         }
     }
 }

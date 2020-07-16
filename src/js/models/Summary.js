@@ -3,8 +3,10 @@ export default class Summary {
         this.title = obj.title;
         this.artist = obj.artist;
         this.time = obj.time[0] + Number((obj.time[1] / 60).toFixed(2));
+        this.timeArr = obj.time;
         this.errors = obj.errors;
         this.charactersQnt = obj.letters.length;
+        this.typedWords = this.charactersQnt / 5;
     }
 
     calculateGrossWPM() {
@@ -28,7 +30,7 @@ export default class Summary {
     calcErrors(type) {
         let errors = this.errors.filter(e => e.state === type);
         let arr = [];
-        for (let i = 0; i < Math.floor(this.time); i++) {
+        for (let i = 0; i < this.timeArr[0] + 1; i++) {
             let val = errors.filter(e => e.time === i);
             arr.push(val.length);
         }
@@ -56,11 +58,11 @@ export default class Summary {
         let uncArray = this.calcErrors('uncorrected');
         let corArray = this.calcErrors('corrected');
         let labels = [];
-        for (let i = 1; i <= Math.floor(this.time) + 1; i++) {
+        for (let i = 1; i <= this.timeArr[0] + 1; i++) {
             labels.push(`${this.ordinal_suffix_of(i)} min.`);
         }
 
-        return this.chartData = {
+        this.chartData = {
             labels: labels,
             datasets: [{
                 label: 'Uncorrected Errors',

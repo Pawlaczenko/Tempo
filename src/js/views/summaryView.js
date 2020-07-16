@@ -1,5 +1,11 @@
+import Chart from 'chart.js';
+
 const formatTime = time => {
     return `${(time[0] < 10) ? '0' : ''}${time[0]}:${(time[1] < 10) ? '0' : ''}${time[1]}`;
+}
+
+const calcErr = (obj, t) => {
+    return obj.filter(e => e.state === t).length;
 }
 
 export const renderSummary = (obj) => {
@@ -15,32 +21,32 @@ export const renderSummary = (obj) => {
                 <table class="summary__table">
                     <tr>
                         <td>Typed words:</td>
-                        <td>321</td>
+                        <td>${Math.round(obj.typedWords)}</td>
                     </tr>
                     <tr>
                         <td>Typed characters:</td>
-                        <td>3211</td>
+                        <td>${obj.charactersQnt}</td>
                     </tr>
                     <tr>
                         <td>Time:</td>
-                        <td>${formatTime(obj.time)}</td>
+                        <td>${formatTime(obj.timeArr)}</td>
                     </tr>
                     <tr>
                         <td>Accuracy</td>
-                        <td>87%</td>
+                        <td>${obj.accuracy}%</td>
                     </tr>
                     <tr>
                         <td>Corrected Errors:</td>
-                        <td>4</td>
+                        <td>${calcErr(obj.errors, 'corrected')}</td>
                     </tr>
                     <tr>
                         <td>Uncorrected errors:</td>
-                        <td>4</td>
+                        <td>${calcErr(obj.errors, 'uncorrected')}</td>
                     </tr>
                 </table>
                 <p class="summary__score">
                     Words per minute:
-                    <span class="summary_wpm">46</span>
+                    <span class="summary_wpm">${obj.wpm}</span>
                 </p>
             </div>
             <div class="summary__chart">
@@ -61,10 +67,34 @@ export const renderSummary = (obj) => {
                 </a>
             </div>
         </div>
-        <figure class="container__background">
-            <img src="./img/keyboard.png" alt="keyboard" class="container__image">
-        </figure>
     `;
-
+    console.log(markup);
     return markup;
+}
+
+export const renderChart = (data) => {
+    let ctx = document.querySelector("#wpmChart").getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'bar',
+        backgroundColor: 'white',
+        data: data,
+        options: {
+            scales: {
+                xAxes: [{
+                    stacked: true
+                }],
+                yAxes: [{
+                    stacked: true
+                }]
+            },
+            legend: {
+                defaultFontColor: 'black',
+                labels: {
+                    // This more specific font property overrides the global property
+                    fontColor: 'black'
+                }
+            }
+        }
+    });
+    Chart.defaults.global.defaultFontColor = 'black';
 }
