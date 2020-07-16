@@ -9,7 +9,7 @@ export default class Game {
         this.time = [0, 0];
         this.errors = [];
         // this.checkpoints = [];
-        // this.typed = 0;
+        this.typed = 0;
     }
 
     async getLyrics() {
@@ -52,7 +52,7 @@ export default class Game {
         if (this.time[1] >= 60) {
             this.time[0] += 1;
             this.time[1] = 0;
-            this.createCheckpoint();
+            // this.createCheckpoint();
         }
 
         return this.time;

@@ -117,22 +117,19 @@ const gameHandler = (e) => {
                 state.game.putError();
                 state.game.changeIndex(1);
             }
+            state.game.typed++;
         }
 
         gameView.updateProgressBar(state.game.getPercentage());
 
         if (state.game.finish()) {
-            finishTest();
+            window.clearInterval(state.timer);
+            summaryController();
         } else {
             //Set cursor
             gameView.activateLetter(state.game.index);
         }
     }
-}
-
-const finishTest = () => {
-    window.clearInterval(state.timer);
-    summaryController();
 }
 
 const gameControl = async song => {
@@ -173,7 +170,13 @@ const intitGame = (e) => {
  */
 
 const summaryController = () => {
+    window.location.hash = 'summary';
+    state.summary = new Summary(state.game);
+    state.summary.calculateNetWPM();
+    state.summary.calculateAccuracy();
+    state.summary.createChartData();
 
+    // common.renderView(state.page, homeView.renderHome());
 }
 
 

@@ -1,37 +1,42 @@
 
 
-// import Chart from 'chart.js';
+import Chart from 'chart.js';
 
-// // let ctx = document.querySelector("#wpmChart").getContext('2d');
-// // export const myChart = new Chart(ctx, {
-// //     type: 'bar',
-// //     backgroundColor: 'white',
-// //     data: {
-// //         labels: [1, 2, 3, 4],
-// //         datasets: [{
-// //             label: 'words typed in a minute',
-// //             data: [45, 52, 45, 12],
-// //             backgroundColor: 'rgba(239, 131, 84,1)',
-// //         }]
-// //     },
-// //     options: {
-// //         scales: {
-// //             yAxes: [{
-// //                 ticks: {
-// //                     beginAtZero: true
-// //                 }
-// //             }]
-// //         },
-// //         legend: {
-// //             defaultFontColor: 'black',
-// //             labels: {
-// //                 // This more specific font property overrides the global property
-// //                 fontColor: 'black'
-// //             }
-// //         }
-// //     }
-// // });
-// // Chart.defaults.global.defaultFontColor = 'black';
+let ctx = document.querySelector("#wpmChart").getContext('2d');
+const myChart = new Chart(ctx, {
+    type: 'bar',
+    backgroundColor: 'white',
+    data: {
+        labels: ['1st min.', `2nd min.`, '3rd min.', '4th min.'],
+        datasets: [{
+            label: 'Uncorrected Errors',
+            data: [5, 2, 6, 9],
+            backgroundColor: '#6A7588',
+        }, {
+            label: 'Corrected Errors',
+            data: [1, 2, 3, 0],
+            backgroundColor: 'rgba(239, 131, 84,1)',
+        }]
+    },
+    options: {
+        scales: {
+            xAxes: [{
+                stacked: true
+            }],
+            yAxes: [{
+                stacked: true
+            }]
+        },
+        legend: {
+            defaultFontColor: 'black',
+            labels: {
+                // This more specific font property overrides the global property
+                fontColor: 'black'
+            }
+        }
+    }
+});
+Chart.defaults.global.defaultFontColor = 'black';
 
 
 
