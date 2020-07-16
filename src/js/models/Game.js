@@ -9,6 +9,7 @@ export default class Game {
         this.time = [0, 0];
         this.errors = [];
         // this.checkpoints = [];
+        // this.typed = 0;
     }
 
     async getLyrics() {
@@ -51,7 +52,7 @@ export default class Game {
         if (this.time[1] >= 60) {
             this.time[0] += 1;
             this.time[1] = 0;
-            // this.createCheckpoint();
+            this.createCheckpoint();
         }
 
         return this.time;
@@ -85,9 +86,8 @@ export default class Game {
 
     // createCheckpoint() {
     //     console.log('checkpoitn');
-    //     let errors = (this.checkpointIndex) ? this.errors.slice(this.checkpointIndex) : this.errors;
-    //     errors = errors.filter(e => e.state === 'uncorrected');
-    //     this.checkpoints.push(errors);
-    //     this.checkpointIndex = this.errors.length
+    //     let wordsQnt = Math.round(this.typed / 5);
+    //     this.checkpoints.push(wordsQnt);
+    //     this.typed = 0;
     // }
-}   
+}

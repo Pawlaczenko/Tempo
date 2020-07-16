@@ -20,7 +20,8 @@
 
         width: 30%;
         margin-right: auto;
-        // white-space: nowrap;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
     &__timer {

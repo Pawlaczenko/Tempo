@@ -13,11 +13,11 @@ const countWords = lyrics => {
     return lyrics.split(' ').length;
 }
 
-const limitString = (title, limit = 16) => {
+const limitString = (title, limit = 16, limitFirst = 11) => {
     const newTitle = [];
     if (title.length >= limit) {
         title = title.split(' ');
-        if (title[0].length > 11) {
+        if (title[0].length > limitFirst) {
             return `${title[0].slice(0, 10)}...`;
         }
         title.reduce((acc, curr) => {

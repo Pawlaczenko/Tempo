@@ -93,13 +93,7 @@ const gameHandler = (e) => {
     let key = e.key;
     //Check if key is not ignored
     if (state.game.ignore(key)) {
-        if (key === 'Enter' && state.game.checkForEnter()) {
-            state.game.popError();
-            //Color green
-            gameView.colorLetter(state.game.index, 1);
-            //change index
-            state.game.changeIndex(1);
-        } else if (key === 'Backspace') {
+        if (key === 'Backspace') {
             //Change index
             state.game.changeIndex(-1);
             //Set cursor
@@ -108,7 +102,13 @@ const gameHandler = (e) => {
 
             //If letter is pressed
         } else {
-            if (state.game.checkLetter(key)) {
+            if (key === 'Enter' && state.game.checkForEnter()) {
+                //Color green
+                gameView.colorLetter(state.game.index, 1);
+                state.game.popError();
+                //change index
+                state.game.changeIndex(1);
+            } else if (state.game.checkLetter(key)) {
                 gameView.colorLetter(state.game.index, 1);
                 state.game.popError();
                 state.game.changeIndex(1);
@@ -118,7 +118,9 @@ const gameHandler = (e) => {
                 state.game.changeIndex(1);
             }
         }
+
         gameView.updateProgressBar(state.game.getPercentage());
+
         if (state.game.finish()) {
             finishTest();
         } else {
@@ -130,9 +132,7 @@ const gameHandler = (e) => {
 
 const finishTest = () => {
     window.clearInterval(state.timer);
-    window.location.hash = 'summary';
-
-    state.summary = new Summary(this.state.game);
+    summaryController();
 }
 
 const gameControl = async song => {
@@ -167,6 +167,15 @@ const intitGame = (e) => {
         gameView.updateTime(state.game.timer());
     }, 1000);
 }
+
+/**
+ * SUMMARY CONTROL
+ */
+
+const summaryController = () => {
+
+}
+
 
 /**
  * NAVIGATION CONTROL
