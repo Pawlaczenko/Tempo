@@ -21,11 +21,11 @@ export const renderAbout = () => {
         <span class="regular-text">
             Start right now:
         </span>
-        <button class="cta cta--dark">
+        <button class="cta cta--dark" id="getTopTracks">
             <svg class="cta__icon">
                 <use xlink:href="./assets/img/_sprite.svg#icon-random"></use>
             </svg>
-            <p class="cta__text">Pick a random song</p>
+            <p class="cta__text">Get top songs in US</p>
         </button>
     </div>
     <figure class="container__background">

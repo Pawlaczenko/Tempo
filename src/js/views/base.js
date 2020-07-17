@@ -22,14 +22,16 @@ const toggleActiveLink = view => {
 }
 
 export const renderView = (view, markup) => {
-    console.log(view);
+    console.log(elements.main.classList);
     elements.main.classList.add(view);
+    console.log(elements.main.classList);
     toggleActiveLink(view);
 
     elements.main.insertAdjacentHTML('afterbegin', markup);
 }
 
 export const renderLoader = (parent) => {
+    console.log('render');
     const markup = `
         <figure class='loader'>
         </figure>

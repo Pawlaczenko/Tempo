@@ -13,3 +13,6 @@
 @mixin fadeInAnim($delay) {
     animation: fadeIn 0.5s $delay both;
 }
+@mixin fadeLeftAnim($delay) {
+    animation: fadeLeft 0.5s $delay both;
+}

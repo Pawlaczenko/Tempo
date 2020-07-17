@@ -23,6 +23,7 @@
         margin-right: auto;
         text-overflow: ellipsis;
         white-space: nowrap;
+        -webkit-font-smoothing: antialiased;
         @include fadeInAnim(0.1s);
     }
 
@@ -47,7 +48,8 @@
         scroll-behavior: smooth;
 
         line-height: 3.3rem;
-        @include fadeInAnim(0.5s);
+        @include fadeLeftAnim(0.5s);
+        -webkit-presprective: 1000;
     }
 
     &__progressBar {
@@ -70,7 +72,6 @@
         font-size: 2.6rem;
         flex: 1;
         animation: flash 1s infinite both;
-        @include fadeInAnim(0.2s);
 
         @include flex-center-center;
 
@@ -94,6 +95,7 @@
 .letter {
     position: relative;
     display: inline-block;
+    -webkit-presprective: 1000;
     &--correct {
         color: $color-correct;
         // background-color: $color-correct;

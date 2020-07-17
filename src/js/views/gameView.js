@@ -12,6 +12,7 @@ const formatLyrics = lyrics => {
 };
 
 export const renderGame = song => {
+    console.log('hello in render game')
     const markup = `
     <div class="game__header">
         <div class="game__title">${song.title} - ${song.artist}</div>
@@ -26,7 +27,7 @@ export const renderGame = song => {
     <div class="game__copyright">${song.copyright}</div>
     <script src="${song.tracking}"></script>
     `;
-
+    console.log(markup);
     return markup;
 };
 
@@ -49,6 +50,7 @@ export const deleteLetter = (index) => {
 }
 
 export const activateLetter = index => {
+    console.log('activate Letter');
     const letter = document.querySelector(`[data-index="${index}"]`);
     if (index > 0) {
         const prevLetter = document.querySelector(`[data-index="${index - 1}"]`);

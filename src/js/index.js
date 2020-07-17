@@ -21,7 +21,7 @@ const controlSearch = id => {
     let hash = '';
     //Get query from input
     if (id === 'getTopTracks') {
-        window.location.hash = `search?t=topUS&page=${1}`;
+        window.location.hash = `search?t=Top%20track%20in%20US`;
     } else {
         const query = searchView.getInput(id);
         if (query) {
@@ -32,7 +32,6 @@ const controlSearch = id => {
 }
 
 const searchHandler = async (obj, page) => {
-    console.log(obj.type);
     //Create search state
     state.search = new Search(obj.query);
     //Prepere UI for results
@@ -87,23 +86,25 @@ window.addEventListener('submit', e => {
     controlSearch(id);
 });
 
-common.elements.main.addEventListener('click', e => {
-    if (e.target && e.target.id === 'getTopTracks') {
-        controlSearch(e.target.id);
-    }
-});
+
 
 /**
  * Game Controller
  */
 
 const gameHandler = (e) => {
+    e.preventDefault();
+    if (!state.init) {
+        intitGame();
+        state.init = 1;
+    };
     //Get pressed key
     let key = e.key;
     //Check if key is not ignored
     if (state.game.ignore(key)) {
         if (key === 'Backspace') {
             //Change index
+
             state.game.changeIndex(-1);
             //Set cursor
             //Delete letter
@@ -126,13 +127,13 @@ const gameHandler = (e) => {
                 state.game.putError();
                 state.game.changeIndex(1);
             }
-            state.game.typed++;
         }
 
         gameView.updateProgressBar(state.game.getPercentage());
 
         if (state.game.finish()) {
             window.clearInterval(state.timer);
+            state.init = 0;
             window.location.hash = 'summary';
         } else {
             //Set cursor
@@ -142,7 +143,6 @@ const gameHandler = (e) => {
 }
 
 const gameControl = async song => {
-    console.log(song);
     window.location.hash = 'game';
     //Create new game object
     state.game = new Game(song.track_id, song.track_name, song.artist_name);
@@ -160,7 +160,6 @@ const gameControl = async song => {
         //Render cursor
         gameView.activateLetter(0);
         //Add event listeners
-        window.addEventListener('keypress', intitGame, { once: true });
         window.addEventListener('keydown', gameHandler);
     } catch (error) {
         console.log(error);
@@ -188,6 +187,20 @@ const summaryController = () => {
 
     common.renderView(state.page, summaryView.renderSummary(state.summary));
     summaryView.renderChart(state.summary.chartData);
+    document.querySelector('#tryAgain').addEventListener('click', e => {
+        console.log('clicked');
+        window.location.hash = 'game';
+        common.clearMain();
+        console.log('restart control');
+        common.renderLoader(common.elements.container);
+        state.game.restart();
+        common.renderView('game', gameView.renderGame(state.game));
+        common.deleteLoader();
+        //Render cursor
+        gameView.activateLetter(0);
+        //Add event listeners
+        window.addEventListener('keydown', gameHandler);
+    });
     common.deleteLoader();
 
 }
@@ -208,15 +221,24 @@ const navigationControl = () => {
     }
 
     //Render Pages
-    if (state.page) {
+    if (state.page && state.page !== 'game') {
         common.clearMain();
-
         if (state.page === 'home') {
             // Render View
             common.renderView(state.page, homeView.renderHome());
+            common.elements.main.addEventListener('click', e => {
+                if (e.target && e.target.id === 'getTopTracks') {
+                    controlSearch(e.target.id);
+                }
+            });
         } else if (state.page === 'about') {
             // Render View
             common.renderView(state.page, aboutView.renderAbout());
+            common.elements.main.addEventListener('click', e => {
+                if (e.target && e.target.id === 'getTopTracks') {
+                    controlSearch(e.target.id);
+                }
+            });
         } else if (state.page.includes('search')) {
             //Get parameters
             let params = new URLSearchParams(state.page.replace('search', ''));
@@ -225,7 +247,6 @@ const navigationControl = () => {
                 query: (params.get('q')) ? params.get('q') : params.get('t'),
                 type: (params.get('q')) ? 'q' : 't'
             }
-            console.log(parameters);
 
             let page = (params.get('page')) ? parseInt(params.get('page'), 10) : 1;
 

@@ -147,7 +147,7 @@ export const renderResults = (data, query, page, pagesQnt, type) => {
         </section>
         <div class="search__pagination">
             <ul class="pagination">
-                ${renderPagination(page, pagesQnt, query, type)}
+                ${(type === 't') ? '' : renderPagination(page, pagesQnt, query, type)}
             </ul>
         </div>
     `;

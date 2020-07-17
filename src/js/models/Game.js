@@ -8,8 +8,6 @@ export default class Game {
         this.index = 0;
         this.time = [0, 0];
         this.errors = [];
-        // this.checkpoints = [];
-        this.typed = 0;
     }
 
     async getLyrics() {
@@ -82,6 +80,12 @@ export default class Game {
 
     finish() {
         return (this.index === this.letters.length);
+    }
+
+    restart() {
+        this.errors = [];
+        this.index = 0;
+        this.time = [0, 0];
     }
 
     // createCheckpoint() {

@@ -53,7 +53,7 @@ export const renderSummary = (obj) => {
                 <canvas id="wpmChart" class="summary__canvas" role="img"></canvas>
             </div>
             <div class="summary__buttons">
-                <a class="cta cta--dark summary__cta" href="#game">
+                <a class="cta cta--dark summary__cta" id="tryAgain">
                     <svg class="cta__icon">
                         <use xlink:href="./assets/img/_sprite.svg#icon-enter"></use>
                     </svg>
@@ -68,7 +68,6 @@ export const renderSummary = (obj) => {
             </div>
         </div>
     `;
-    console.log(markup);
     return markup;
 }
 
