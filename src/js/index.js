@@ -188,10 +188,8 @@ const summaryController = () => {
     common.renderView(state.page, summaryView.renderSummary(state.summary));
     summaryView.renderChart(state.summary.chartData);
     document.querySelector('#tryAgain').addEventListener('click', e => {
-        console.log('clicked');
         window.location.hash = 'game';
         common.clearMain();
-        console.log('restart control');
         common.renderLoader(common.elements.container);
         state.game.restart();
         common.renderView('game', gameView.renderGame(state.game));
@@ -226,9 +224,7 @@ const navigationControl = () => {
         if (state.page === 'home') {
             // Render View
             common.renderView(state.page, homeView.renderHome());
-            console.log('top');
             common.elements.main.addEventListener('click', e => {
-                console.log('top');
                 if (e.target && e.target.id === 'getTopTracks') {
                     controlSearch(e.target.id);
                 }
@@ -267,7 +263,13 @@ const resetPage = () => {
     window.location.hash = 'home';
     common.clearMain();
     common.renderView('home', homeView.renderHome());
+
+    common.elements.main.addEventListener('click', e => {
+        if (e.target && e.target.id === 'getTopTracks') {
+            controlSearch(e.target.id);
+        }
+    });
 }
 
 window.addEventListener('hashchange', navigationControl);
-window.addEventListener('load', navigationControl);
+window.addEventListener('load', resetPage);
