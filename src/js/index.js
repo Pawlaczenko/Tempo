@@ -226,7 +226,9 @@ const navigationControl = () => {
         if (state.page === 'home') {
             // Render View
             common.renderView(state.page, homeView.renderHome());
+            console.log('top');
             common.elements.main.addEventListener('click', e => {
+                console.log('top');
                 if (e.target && e.target.id === 'getTopTracks') {
                     controlSearch(e.target.id);
                 }
@@ -254,6 +256,8 @@ const navigationControl = () => {
             if (parameters.query) searchHandler(parameters, page);
         } else if (state.page === 'summary') {
             summaryController();
+        } else {
+            resetPage();
         }
     }
 }
@@ -266,4 +270,4 @@ const resetPage = () => {
 }
 
 window.addEventListener('hashchange', navigationControl);
-window.addEventListener('load', resetPage);
+window.addEventListener('load', navigationControl);

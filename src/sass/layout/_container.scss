@@ -1,8 +1,8 @@
 .container {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
+    // left: 50%;
+    // top: 50%;
+    // transform: translate(-50%, -50%);
     width: 91%;
     height: 87vh;
     padding: 4rem 7rem;
@@ -18,9 +18,10 @@
         position: absolute;
         top: 0;
         right: -5rem;
-        z-index: -1;
         width: 60%;
         @include fadeInAnim(0.4s);
+
+        z-index: 1;
 
         //     @media only screen and (max-width: $bp-largest) {
         //         width: 60%;

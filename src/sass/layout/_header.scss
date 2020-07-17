@@ -6,6 +6,8 @@
     align-items: center;
     column-gap: 6rem;
 
+    z-index: 100;
+
     // @include flex-center-row;
 
     &__logo {
