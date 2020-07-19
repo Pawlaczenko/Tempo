@@ -97,7 +97,7 @@
 .letter {
     position: relative;
     display: inline-block;
-    -webkit-presprective: 1000;
+
     &--correct {
         color: $color-correct;
         // background-color: $color-correct;
@@ -128,6 +128,8 @@
             width: 100%;
             background-color: #000;
             animation: flash 0.5s infinite both;
+
+            scroll-behavior: smooth;
         }
     }
 }

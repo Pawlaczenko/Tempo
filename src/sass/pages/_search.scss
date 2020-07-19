@@ -15,7 +15,7 @@
         padding-bottom: 4rem;
 
         display: grid;
-        grid-template-columns: repeat(auto-fit, 39.5rem);
+        grid-template-columns: repeat(auto-fit, 39rem);
         column-gap: 6rem;
         row-gap: 5rem;
         // border-left: 1px solid $color-primary;
@@ -58,6 +58,8 @@
     color: $color-grey-3;
     position: relative;
     transition: all 0.2s;
+    // border: 5px solid $color-grey-2;
+    // background-color: $color-grey-1;
 
     &::before,
     &::after {
@@ -66,20 +68,20 @@
 
         position: absolute;
         right: 0;
-
+        // opacity: 0;
         width: 3rem;
         height: 3rem;
-        border-right: 2px solid rgba($color: $color-grey-3, $alpha: 0.5);
+        border-right: 2px solid rgba($color: $color-secondary-dark, $alpha: 0.3);
     }
 
     &::before {
         top: 0;
-        border-top: 1px solid rgba($color: $color-grey-3, $alpha: 0.5);
+        border-top: 2px solid rgba($color: $color-secondary-dark, $alpha: 0.3);
     }
 
     &::after {
         bottom: 0;
-        border-bottom: 1px solid rgba($color: $color-grey-3, $alpha: 0.5);
+        border-bottom: 2px solid rgba($color: $color-secondary-dark, $alpha: 0.3);
     }
 
     &--disabled {
@@ -144,10 +146,10 @@
 
     &__explicit {
         position: absolute;
-        width: 4.5rem;
+        width: 3.5rem;
         right: 0.5rem;
         bottom: 0.3rem;
-        opacity: 0.75;
+        opacity: 0.8;
     }
 
     &__warning {
