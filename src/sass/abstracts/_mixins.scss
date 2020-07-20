@@ -16,3 +16,9 @@
 @mixin fadeLeftAnim($delay) {
     animation: fadeLeft 0.5s $delay both;
 }
+@mixin text-ellipsis {
+    text-overflow: ellipsis;
+    width: 100%;
+    overflow-x: hidden;
+    white-space: nowrap;
+}

@@ -14,20 +14,20 @@ const countWords = lyrics => {
 }
 
 const limitString = (title, limit = 16, limitFirst = 11) => {
-    const newTitle = [];
-    if (title.length >= limit) {
-        title = title.split(' ');
-        if (title[0].length > limitFirst) {
-            return `${title[0].slice(0, 10)}...`;
-        }
-        title.reduce((acc, curr) => {
-            if (acc + curr.length <= limit) {
-                newTitle.push(curr);
-            }
-            return acc + curr.length;
-        }, 0);
-        return `${newTitle.join(' ')}...`;
-    }
+    // const newTitle = [];
+    // if (title.length >= limit) {
+    //     title = title.split(' ');
+    //     if (title[0].length > limitFirst) {
+    //         return `${title[0].slice(0, 10)}...`;
+    //     }
+    //     title.reduce((acc, curr) => {
+    //         if (acc + curr.length <= limit) {
+    //             newTitle.push(curr);
+    //         }
+    //         return acc + curr.length;
+    //     }, 0);
+    //     return `${newTitle.join(' ')}...`;
+    // }
     return title;
 }
 
@@ -37,7 +37,8 @@ const checkImage = (img) => {
 }
 
 const isExplicit = bool => {
-    return (bool) ? `<img src="src/img/explicit.png" alt="explicit language" class="song__warning">` : '';
+    return (bool) ? `! explicit content` : '';
+    // return (bool) ? `<img src="src/img/explicit.png" alt="explicit language" class="song__warning">` : '';
 }
 
 const renderSong = song => {
@@ -52,10 +53,10 @@ const renderSong = song => {
         <div class="song__info">
             <p class="song__title">${limitString(song.track_name)}</p>
             <p class="song__artist">by ${limitString(song.artist_name, 20)}</p>
+            <p class="song__explicit">
+                ${isExplicit(song.explicit)}
+            </p>
         </div>
-        <figure class="song__explicit">
-            ${isExplicit(song.explicit)}
-        </figure>
     </div>
     `;
     return markup;

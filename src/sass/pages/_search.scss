@@ -8,18 +8,6 @@
 
     &__results {
         @include fadeInAnim(0.2s);
-        overflow-y: auto;
-        max-height: 50vh;
-        margin-top: 4rem;
-        padding-right: 4rem;
-        padding-bottom: 4rem;
-
-        display: grid;
-        grid-template-columns: repeat(auto-fit, 39rem);
-        column-gap: 6rem;
-        row-gap: 5rem;
-        // border-left: 1px solid $color-primary;
-
         &::-webkit-scrollbar-track {
             -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
             border-radius: 10px;
@@ -36,6 +24,18 @@
             -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
             background-color: $color-primary;
         }
+        overflow-y: auto;
+        max-height: 50vh;
+        margin-top: 4rem;
+        padding-right: 4rem;
+        padding-bottom: 4rem;
+
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 39rem);
+        column-gap: 6rem;
+        row-gap: 5rem;
+        // justify-content: center;
+        // border-left: 1px solid $color-primary;
     }
 
     &__pagination {
@@ -145,26 +145,31 @@
     }
 
     &__explicit {
-        position: absolute;
-        width: 3.5rem;
-        right: 0.5rem;
-        bottom: 0.3rem;
-        opacity: 0.8;
+        // position: absolute;
+        // width: 3.5rem;
+        // right: 0.5rem;
+        // bottom: 0.3rem;
+        // opacity: 0.8;
+        color: #ff5555;
+        font-weight: 700;
+        font-size: 1.45rem;
     }
 
-    &__warning {
-        width: 100%;
-    }
+    // &__warning {
+    //     width: 100%;
+    // }
 
     &__title {
         font-size: 2.8rem;
-        line-height: 1;
+        // line-height: 1;
         margin-bottom: 1rem;
+        @include text-ellipsis;
     }
 
     &__artist {
         font-size: 1.8rem;
         font-weight: 200;
+        @include text-ellipsis;
     }
 
     &__words {
@@ -190,6 +195,9 @@
 
     &:not(.song--disabled):hover &__words {
         color: white;
+    }
+    &:not(.song--disabled):hover &__explicit {
+        color: black;
     }
 
     &:not(.song--disabled):hover &__icon {

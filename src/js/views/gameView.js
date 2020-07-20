@@ -78,12 +78,7 @@ export const updateProgressBar = (percentage) => {
 
 }
 
-const scrollGame = (line = 0, lineHeight = 33) => {
-    // const scrollOptions = {
-    //     left: 0,
-    //     top: lineHeight * line,
-    //     behavior: 'smooth'
-    // }
+export const scrollGame = () => {
     document.querySelector('.letter--active').scrollIntoView({
         behavior: 'smooth',
         block: "center",

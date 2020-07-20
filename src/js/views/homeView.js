@@ -3,7 +3,7 @@ import { elements } from './../views/base';
 export const renderHome = () => {
     const markup = `
     <h1 class="home__heading heading--1">
-        Try <span class="heading--highlight">your</span> typing speed <br />
+        Test <span class="heading--highlight">your</span> typing speed <br />
         with <span class="heading--highlight">your</span> favorite songs
     </h1>
     <div class="action">
