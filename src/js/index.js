@@ -39,7 +39,7 @@ const searchHandler = async (obj, page) => {
     try {
         //Get search results
         await state.search.getResults(page, obj.type);
-        await state.search.getAlbumArts();
+
         //Get number of sites
         state.search.calcSites();
         console.log(state.search.results);
@@ -52,6 +52,9 @@ const searchHandler = async (obj, page) => {
             common.renderView('search', searchView.renderResults(state.search.results, state.search.query, page, state.search.sitesQnt, obj.type));
             //Add Event Listeners
             addSearchListeners();
+            await state.search.getAlbumArts();
+            searchView.songImage(state.search.results);
+
         }
     } catch (error) {
         console.log(error);

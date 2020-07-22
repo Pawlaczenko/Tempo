@@ -41,11 +41,22 @@ const isExplicit = bool => {
     // return (bool) ? `<img src="src/img/explicit.png" alt="explicit language" class="song__warning">` : '';
 }
 
+export const songImage = (songs) => {
+
+    songs.forEach((e, i) => {
+        let img = document.querySelector(`[data-goto="${e.track.track_id}"]`).querySelector('.song__img');
+        let loader = document.querySelector(`[data-goto="${e.track.track_id}"]`).querySelector('.song__album-cover');
+        img.src = checkImage(e.track.album_img);
+        loader.removeChild(document.querySelector('.loader'));
+    });
+}
+
 const renderSong = song => {
     const markup = `
     <div class="song ${(song.has_lyrics) ? '' : 'song--disabled'}" data-goto="${song.track_id}">
         <figure class="song__album-cover">
-            <img src="${checkImage(song.album_img)}" alt="${song.track_name}" class="song__img">
+            <img src="src/img/favico-opace.png" alt="${song.track_name}" class="song__img">
+            <figure class='loader'></figure>
             <svg class="song__icon">
                 <use xlink:href="./assets/img/_sprite.svg#icon-play"></use>
             </svg>

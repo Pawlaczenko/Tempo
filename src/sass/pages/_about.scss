@@ -4,7 +4,7 @@
     grid-template-areas: "heading cta" "info cta";
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto;
-    overflow-y: auto;
+    // overflow-y: auto;
 
     &::-webkit-scrollbar-track {
         -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
@@ -43,7 +43,7 @@
 
     &__paragraph {
         font-size: 2.2rem;
-        margin: 4rem 2rem;
+        margin: 2rem 2rem;
         position: relative;
 
         &:before {
@@ -61,10 +61,14 @@
         &:last-child {
             max-width: 80%;
         }
+
+        &:first-child {
+            margin-top: 4rem;
+        }
     }
 
     &__cta {
-        @include fadeInAnim(0.2s);
+        @include fadeInAnim(0.3s);
         display: flex;
         flex-direction: column;
         justify-content: center;
