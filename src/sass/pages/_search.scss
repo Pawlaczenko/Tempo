@@ -219,3 +219,12 @@
         transform: scale(0.97);
     }
 }
+
+.notfound {
+    width: 50%;
+    margin: 5rem auto;
+
+    &__img {
+        width: 100%;
+    }
+}

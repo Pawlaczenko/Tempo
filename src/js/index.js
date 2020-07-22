@@ -38,11 +38,10 @@ const searchHandler = async (obj, page) => {
     common.renderLoader(common.elements.main);
     try {
         //Get search results
-        await state.search.getResults(page, obj.type);
+        let res = await state.search.getResults(page, obj.type)
 
         //Get number of sites
         state.search.calcSites();
-        console.log(state.search.results);
 
         //Prepare the UI
         common.deleteLoader();
@@ -50,10 +49,13 @@ const searchHandler = async (obj, page) => {
         if (state.page.includes('search')) {
             //Render search views
             common.renderView('search', searchView.renderResults(state.search.results, state.search.query, page, state.search.sitesQnt, obj.type));
-            //Add Event Listeners
-            addSearchListeners();
-            await state.search.getAlbumArts();
-            searchView.songImage(state.search.results);
+            if (res !== -1) {
+                addSearchListeners();
+                await state.search.getAlbumArts();
+                searchView.songImage(state.search.results);
+            } else {
+                searchView.renderNotFound();
+            }
 
         }
     } catch (error) {

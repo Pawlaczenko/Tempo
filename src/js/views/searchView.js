@@ -149,13 +149,23 @@ const renderPagination = (currentPage = 1, pagesQnt, query, type) => {
     return markup;
 }
 
+export const renderNotFound = () => {
+    document.querySelector('.search__heading').insertAdjacentHTML('afterend', '<figure class="notfound"><img src="src/img/notfound.png" class="notfound__img" alt="Results not found"></figure>');
+}
+
 export const renderResults = (data, query, page, pagesQnt, type) => {
-    const markup = `
+    // console.log(data);
+    let markup = '';
+    // if (data === -1) {
+    //     markup = renderNotFound();
+    //     return markup;
+    // }
+    markup = `
         <h2 class="search__heading heading--2">
             Results for <span class="heading--highlight heading--underline">${query}</span>:
         </h2>
         <section class="search__results">
-            ${renderAllSongs(data)}
+            ${data ? renderAllSongs(data) : ''}
         </section>
         <div class="search__pagination">
             <ul class="pagination">
