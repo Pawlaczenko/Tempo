@@ -79,7 +79,7 @@ const renderSong = song => {
 //         <figure class="song__album-cover">
 //             <img src="${checkImage(song.album_art)}" alt="Redbone" class="song__img">
 //             <svg class="song__icon">
-//                 <use xlink:href="./assets/img/_sprite.svg#icon-play"></use>
+//                 <use xlink:href="./src/img/_sprite.svg#icon-play"></use>
 //             </svg>
 //         </figure>
 //         <div class="song__info">
@@ -154,12 +154,7 @@ export const renderNotFound = () => {
 }
 
 export const renderResults = (data, query, page, pagesQnt, type) => {
-    // console.log(data);
     let markup = '';
-    // if (data === -1) {
-    //     markup = renderNotFound();
-    //     return markup;
-    // }
     markup = `
         <h2 class="search__heading heading--2">
             Results for <span class="heading--highlight heading--underline">${query}</span>:
@@ -169,7 +164,7 @@ export const renderResults = (data, query, page, pagesQnt, type) => {
         </section>
         <div class="search__pagination">
             <ul class="pagination">
-                ${(type === 't') ? '' : renderPagination(page, pagesQnt, query, type)}
+                ${(type === 't' || !data) ? '' : renderPagination(page, pagesQnt, query, type)}
             </ul>
         </div>
     `;

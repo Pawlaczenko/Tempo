@@ -4,6 +4,7 @@ const merge = require("webpack-merge");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyPlugin = require('copy-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = merge(common, {
   mode: "development",
@@ -23,25 +24,27 @@ module.exports = merge(common, {
         }
       ]
     }),
-    new FaviconsWebpackPlugin('./src/img/favicon.ico')
+    new FaviconsWebpackPlugin('./src/img/favicon.ico'),
+    new ExtractTextPlugin("style.css")
   ],
   module: {
     rules: [
       {
         test: /\.scss$/,
-        use: [
-          "style-loader", //3. Inject styles into DOM
-          "css-loader", //2. Turns css into commonjs
-          "sass-loader" //1. Turns sass into css
-        ]
+        use: ExtractTextPlugin.extract({
+          use: [
+            'css-loader',
+            'sass-loader'
+          ]
+        })
       },
-      {
-        test: /\.css$/,
-        use: [
-          "style-loader", //3. Inject styles into DOM
-          "css-loader", //2. Turns css into commonjs
-        ]
-      }
+      // {
+      //   test: /\.css$/,
+      //   use: [
+      //     "style-loader", //3. Inject styles into DOM
+      //     "css-loader", //2. Turns css into commonjs
+      //   ]
+      // }
     ]
   }
 });

@@ -22,7 +22,6 @@ const formatLyrics = lyrics => {
         letter = (e === '\n') ? `<span class="enter letter" data-index='${i}'>&crarr;</span><br />` : `${wordB}<span class='letter' data-index='${i}'>${letter}</span>${wordE}`;
         markup += letter;
     });
-    console.log(markup);
     return markup;
 };
 
