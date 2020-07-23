@@ -6,6 +6,11 @@
         column-gap: 1.5rem;
 
         list-style-type: none;
+        @media only screen and (max-width: $bp-small) {
+            grid-template-columns: 100%;
+            column-gap: 0;
+            row-gap: 4rem;
+        }
     }
 
     &__list-item {
@@ -18,12 +23,20 @@
                 width: 100%;
             }
         }
+
+        @media only screen and (max-width: $bp-small) {
+            text-align: center;
+        }
     }
 
     &__list-link {
         position: relative;
         font-size: 2rem;
         transition: color 0.2s;
+
+        @media only screen and (max-width: $bp-small) {
+            font-size: 3rem;
+        }
 
         &:before {
             width: 0;

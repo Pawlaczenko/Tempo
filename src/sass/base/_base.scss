@@ -2,6 +2,7 @@ html {
     box-sizing: border-box;
     font-size: 62.5%; // 1rem = 10px;
     font-family: $font-primary;
+    min-height: 100vh;
 
     @media only screen and (max-width: $bp-largest) {
         font-size: 50%;
@@ -12,6 +13,13 @@ body {
     overflow: hidden;
     height: 100vh;
     @include flex-center-center;
+
+    @media only screen and (max-width: $bp-small) {
+        height: initial;
+        display: block;
+        overflow: auto;
+        // opacity: 0;
+    }
 }
 
 .background {

@@ -223,7 +223,7 @@
 .notfound {
     width: 50%;
     margin: 5rem auto;
-
+    @include fadeInAnim(0.3s);
     &__img {
         width: 100%;
     }

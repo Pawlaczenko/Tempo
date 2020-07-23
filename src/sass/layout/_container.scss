@@ -7,7 +7,10 @@
     height: 87vh;
     padding: 4rem 7rem;
 
-    background-color: $color-grey-1;
+    background: rgba($color-grey-1, 0.8);
+    background-position: bottom;
+    background-size: contain;
+    background-repeat: no-repeat;
     border-radius: 1.9rem;
     box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.41);
 
@@ -19,19 +22,27 @@
         width: 95%;
     }
 
-    &::after {
-        content: "";
-        background-image: url("./../img/main.png");
-        background-position: bottom;
-        background-size: contain;
-        background-repeat: no-repeat;
-        opacity: 0.1;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        position: absolute;
+    @media only screen and (max-width: $bp-small) {
+        height: auto;
+        min-height: 100vh;
+        // height: initial;
+        width: 100%;
+        overflow: auto;
+        padding: 3.5rem 4.5rem;
+        border-radius: 0;
     }
+
+    // &::after {
+    //     content: "";
+    //     // background-image: url("./../img/main.png");
+
+    //     opacity: 0.1;
+    //     top: 0;
+    //     left: 0;
+    //     bottom: 0;
+    //     right: 0;
+    //     position: absolute;
+    // }
 
     &__background {
         position: absolute;
@@ -41,7 +52,9 @@
         @include fadeInAnim(0.4s);
 
         z-index: 1;
-
+        @media only screen and (max-width: $bp-small) {
+            display: none;
+        }
         //     @media only screen and (max-width: $bp-largest) {
         //         width: 60%;
         //     }

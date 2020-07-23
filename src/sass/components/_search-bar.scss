@@ -9,6 +9,10 @@
 
     &--action {
         width: 48rem;
+
+        @media only screen and (max-width: $bp-small) {
+            width: 100%;
+        }
     }
 
     &__input {
