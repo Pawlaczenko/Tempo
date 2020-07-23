@@ -1,6 +1,9 @@
 .summary {
     padding: 0 10rem;
     margin-top: 3rem;
+    @media only screen and (max-width: $bp-small) {
+        padding: 0;
+    }
 
     &__heading {
         @include fadeInAnim(0s);
@@ -12,6 +15,9 @@
         @include fadeInAnim(0s);
         max-width: 50%;
         text-overflow: ellipsis;
+        @media only screen and (max-width: $bp-small) {
+            max-width: 100%;
+        }
     }
 
     &__container {
@@ -19,6 +25,11 @@
         grid-template-columns: 1fr 50%;
         grid-template-rows: auto;
         grid-template-areas: "table chart" "buttons buttons";
+
+        @media only screen and (max-width: $bp-small) {
+            display: flex;
+            flex-direction: column;
+        }
     }
 
     &__content {
@@ -26,6 +37,10 @@
         width: 80%;
         margin-top: 5rem;
         @include fadeInAnim(0.1s);
+
+        @media only screen and (max-width: $bp-small) {
+            width: 100%;
+        }
     }
 
     &__table {
@@ -68,6 +83,9 @@
         grid-area: chart;
         background-color: rgba($color-grey-1, 0.6);
         position: relative;
+        @media only screen and (max-width: $bp-small) {
+            margin: 3rem 0;
+        }
         // display: flex;
         // align-items: center;
         // justify-content: center;
@@ -84,10 +102,23 @@
         @include fadeInAnim(0.3s);
         display: flex;
         margin-top: 4rem;
+
+        @media only screen and (max-width: $bp-small) {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1rem;
+            margin-bottom: 3.5rem;
+        }
     }
 
     &__cta {
         margin-right: 2.5rem;
         @include fadeInAnim(0.5s);
+
+        @media only screen and (max-width: $bp-small) {
+            margin-right: 0;
+            margin: 1.5rem 0;
+        }
     }
 }

@@ -4,6 +4,10 @@
     flex-direction: column;
     height: 90%;
 
+    @media only screen and (max-width: $bp-small) {
+        padding: 1.5rem 0;
+    }
+
     &__header {
         display: flex;
         align-items: center;
@@ -12,6 +16,10 @@
         margin-bottom: 1rem;
         position: relative;
         @include fadeInAnim(0s);
+
+        @media only screen and (max-width: $bp-small) {
+            flex-wrap: wrap;
+        }
     }
 
     &__title {
@@ -23,8 +31,13 @@
         margin-right: auto;
         text-overflow: ellipsis;
         white-space: nowrap;
-        -webkit-font-smoothing: antialiased;
+
         @include fadeInAnim(0.1s);
+
+        @media only screen and (max-width: $bp-small) {
+            order: 2;
+            width: 45%;
+        }
     }
 
     &__timer {
@@ -36,6 +49,10 @@
 
         text-align: right;
         @include fadeInAnim(0.3s);
+        @media only screen and (max-width: $bp-small) {
+            order: 3;
+            width: 45%;
+        }
     }
 
     &__lyrics {
@@ -73,9 +90,15 @@
         color: $color-primary;
         font-size: 2.6rem;
         flex: 1;
+        text-align: center;
         animation: flash 1s infinite both;
 
         @include flex-center-center;
+
+        @media only screen and (max-width: $bp-small) {
+            order: 1;
+            min-width: 100%;
+        }
 
         // position: absolute;
         // left: 50%;
@@ -132,4 +155,8 @@
             scroll-behavior: smooth;
         }
     }
+}
+
+.word {
+    display: inline-block;
 }

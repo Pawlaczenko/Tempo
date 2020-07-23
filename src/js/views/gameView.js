@@ -2,12 +2,27 @@ import { elements } from './base.js';
 
 const formatLyrics = lyrics => {
     let markup = '';
+    let wordB = '<span class="word">';
+    let wordE = '</span>';
     lyrics.forEach((e, i) => {
         let letter = e;
-        if (letter === ' ') letter = '&nbsp;'
-        letter = (e === '\n') ? `<span class="enter letter" data-index='${i}'>&crarr;</span><br />` : `<span class='letter' data-index='${i}'>${letter}</span>`;
+        if (letter === ' ') {
+            letter = '&nbsp;'
+        }
+        if (!lyrics[i + 1] || lyrics[i + 1] === ' ' || lyrics[i + 1] === '\n') {
+            wordE = '</span>'
+        } else {
+            wordE = '';
+        }
+        if (!lyrics[i - 1] || lyrics[i - 1] === ' ' || lyrics[i - 1] === '\n') {
+            wordB = '<span class="word">'
+        } else {
+            wordB = '';
+        }
+        letter = (e === '\n') ? `<span class="enter letter" data-index='${i}'>&crarr;</span><br />` : `${wordB}<span class='letter' data-index='${i}'>${letter}</span>${wordE}`;
         markup += letter;
     });
+    console.log(markup);
     return markup;
 };
 
