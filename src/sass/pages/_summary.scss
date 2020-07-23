@@ -16,7 +16,7 @@
 
     &__container {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr 50%;
         grid-template-rows: auto;
         grid-template-areas: "table chart" "buttons buttons";
     }
@@ -67,6 +67,7 @@
         @include fadeInAnim(0.2s);
         grid-area: chart;
         background-color: rgba($color-grey-1, 0.6);
+        position: relative;
         // display: flex;
         // align-items: center;
         // justify-content: center;
