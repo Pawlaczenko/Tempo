@@ -60,7 +60,6 @@ const searchHandler = async (obj, page) => {
         }
     } catch (error) {
         console.log(error);
-        // searchView.renderError(state.search.query);
     }
 }
 
@@ -166,12 +165,17 @@ const gameControl = async song => {
 
         common.renderView('game', gameView.renderGame(state.game));
         common.deleteLoader();
+        if (state.game.letters.length !== 0) {
+            console.log('Im here 111111')
+            gameView.activateLetter(0);
+            //Add event listeners
+            window.addEventListener('keydown', gameHandler);
+        }
         //Render cursor
-        gameView.activateLetter(0);
-        //Add event listeners
-        window.addEventListener('keydown', gameHandler);
+
     } catch (error) {
-        console.log(error);
+        common.renderView('game', gameView.renderError());
+        common.deleteLoader();
     }
 }
 

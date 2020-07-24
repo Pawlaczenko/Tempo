@@ -43,6 +43,19 @@ export const renderGame = song => {
     return markup;
 };
 
+export const renderError = () => {
+    const markup = `
+        <div class="gameError">
+        <p class="gameError__text">Sorry, something went wrong. It's probably server's fault. Try again later.</p>
+            <figure class="gameError__emoji">
+                <img src="src/img/sad_face.png" class="gameError__img">
+            </figure>
+        </div>
+    `;
+
+    return markup;
+}
+
 export const colorLetter = (index, state) => {
     const cssClass = (state) ? 'letter--correct' : 'letter--incorrect';
     const letter = document.querySelector(`[data-index="${index}"]`);

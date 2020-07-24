@@ -1,7 +1,16 @@
 import { elements } from './base';
 
 export const getInput = id => {
-    return (id === 'home') ? document.querySelector('.search-bar__input--action').value : elements.searchBar.value;
+    let val = '';
+    if (id === 'home') {
+        val = document.querySelector('.search-bar__input--action').value;
+    } else {
+        val = elements.searchBar.value;
+        console.log(elements.searchBar);
+        elements.searchBar.blur();
+    }
+
+    return val;
 };
 export const clearInput = () => { elements.searchBar.value = '' };
 
@@ -11,24 +20,6 @@ const countWords = lyrics => {
     lyrics = lyrics.replace(/[ ]{2,}/gi, " ");
 
     return lyrics.split(' ').length;
-}
-
-const limitString = (title, limit = 16, limitFirst = 11) => {
-    // const newTitle = [];
-    // if (title.length >= limit) {
-    //     title = title.split(' ');
-    //     if (title[0].length > limitFirst) {
-    //         return `${title[0].slice(0, 10)}...`;
-    //     }
-    //     title.reduce((acc, curr) => {
-    //         if (acc + curr.length <= limit) {
-    //             newTitle.push(curr);
-    //         }
-    //         return acc + curr.length;
-    //     }, 0);
-    //     return `${newTitle.join(' ')}...`;
-    // }
-    return title;
 }
 
 const checkImage = (img) => {
@@ -62,8 +53,8 @@ const renderSong = song => {
             </svg>
         </figure>
         <div class="song__info">
-            <p class="song__title">${limitString(song.track_name)}</p>
-            <p class="song__artist">by ${limitString(song.artist_name, 20)}</p>
+            <p class="song__title">${song.track_name}</p>
+            <p class="song__artist">by ${song.artist_name}</p>
             <p class="song__explicit">
                 ${isExplicit(song.explicit)}
             </p>
