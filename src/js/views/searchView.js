@@ -6,7 +6,6 @@ export const getInput = id => {
         val = document.querySelector('.search-bar__input--action').value;
     } else {
         val = elements.searchBar.value;
-        console.log(elements.searchBar);
         elements.searchBar.blur();
     }
 
@@ -23,13 +22,12 @@ const countWords = lyrics => {
 }
 
 const checkImage = (img) => {
-    if (!img) return 'src/img/favico.png';
+    if (!img) return './assets/img/favico.png';
     return img;
 }
 
 const isExplicit = bool => {
     return (bool) ? `! explicit content` : '';
-    // return (bool) ? `<img src="src/img/explicit.png" alt="explicit language" class="song__warning">` : '';
 }
 
 export const songImage = (songs) => {
@@ -46,7 +44,7 @@ const renderSong = song => {
     const markup = `
     <div class="song ${(song.has_lyrics) ? '' : 'song--disabled'}" data-goto="${song.track_id}">
         <figure class="song__album-cover">
-            <img src="src/img/favico-opace.png" alt="${song.track_name}" class="song__img">
+            <img src="./assets/img/favico-opace.png" alt="${song.track_name}" class="song__img">
             <figure class='loader'></figure>
             <svg class="song__icon">
                 <use xlink:href="./assets/img/_sprite.svg#icon-play"></use>
@@ -63,25 +61,6 @@ const renderSong = song => {
     `;
     return markup;
 }
-
-// const renderSong = song => {
-//     const markup = `
-//     <div class="song" data-goto="${song.id}">
-//         <figure class="song__album-cover">
-//             <img src="${checkImage(song.album_art)}" alt="Redbone" class="song__img">
-//             <svg class="song__icon">
-//                 <use xlink:href="./src/img/_sprite.svg#icon-play"></use>
-//             </svg>
-//         </figure>
-//         <div class="song__info">
-//             <p class="song__title">${limitTitle(song.name)}</p>
-//             <p class="song__artist">by ${song.artist}</p>
-//             <p class="song__words">${countWords(song.lyrics)} words</p>
-//         </div>
-//     </div>
-//     `;
-//     return markup;
-// }
 
 const renderAllSongs = data => {
     let songs = '';
@@ -141,7 +120,7 @@ const renderPagination = (currentPage = 1, pagesQnt, query, type) => {
 }
 
 export const renderNotFound = () => {
-    document.querySelector('.search__heading').insertAdjacentHTML('afterend', '<figure class="notfound"><img src="src/img/notfound.png" class="notfound__img" alt="Results not found"></figure>');
+    document.querySelector('.search__heading').insertAdjacentHTML('afterend', '<figure class="notfound"><img src="./assets/img/notfound.png" class="notfound__img" alt="Results not found"></figure>');
 }
 
 export const renderResults = (data, query, page, pagesQnt, type) => {

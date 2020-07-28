@@ -38,7 +38,7 @@ export const renderGame = song => {
     </div>
     <div class="game__progressBar"></div>
     <div class="game__copyright">${song.copyright}</div>
-    <script src="${song.tracking}"></script>
+    <img src="${song.tracking}" style="width:0px; height: 0px;">
     `;
     return markup;
 };
@@ -48,7 +48,7 @@ export const renderError = () => {
         <div class="gameError">
         <p class="gameError__text">Sorry, something went wrong. It's probably server's fault. Try again later.</p>
             <figure class="gameError__emoji">
-                <img src="src/img/sad_face.png" class="gameError__img">
+                <img src="./assets/img/sad_face.png" class="gameError__img">
             </figure>
         </div>
     `;
@@ -61,8 +61,6 @@ export const colorLetter = (index, state) => {
     const letter = document.querySelector(`[data-index="${index}"]`);
     if (letter) {
         letter.classList.add(cssClass);
-    } else {
-        console.log("Letter not found");
     }
 }
 

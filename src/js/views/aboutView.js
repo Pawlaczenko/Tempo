@@ -18,7 +18,7 @@ export const renderAbout = () => {
 
         </p>            
         <figure class="about__equation">
-            <img class="about__equation__img" src="src/img/equation.png" alt="(no. of words - no. of errors)/time">
+            <img class="about__equation__img" src="./assets/img/equation.png" alt="(no. of words - no. of errors)/time">
         </figure>
         <p class="about__paragraph">
             Due to the nature of a typing speed test, you will be unable to perform the test on your mobile device. Try this app on a device with a keyboard.

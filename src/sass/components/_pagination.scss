@@ -4,6 +4,11 @@
     align-items: center;
     justify-content: space-between;
 
+    position: absolute;
+    bottom: 5rem;
+    left: 50%;
+    transform: translateX(-50%);
+
     &__item {
         font-size: 1.9rem;
         font-weight: bold;

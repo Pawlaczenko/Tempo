@@ -18,10 +18,9 @@ export default class Game {
             let letters = lyrics.split('');
             this.letters = letters.slice(0, -75);
 
-            this.tracking = res.data.message.body.lyrics.script_tracking_url;
+            this.tracking = res.data.message.body.lyrics.pixel_tracking_url;
             this.copyright = res.data.message.body.lyrics.lyrics_copyright;
         } catch (error) {
-            console.log(error);
             return -1;
         }
     }
@@ -86,11 +85,4 @@ export default class Game {
         this.index = 0;
         this.time = [0, 0];
     }
-
-    // createCheckpoint() {
-    //     console.log('checkpoitn');
-    //     let wordsQnt = Math.round(this.typed / 5);
-    //     this.checkpoints.push(wordsQnt);
-    //     this.typed = 0;
-    // }
 }

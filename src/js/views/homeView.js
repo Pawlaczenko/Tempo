@@ -26,7 +26,7 @@ export const renderHome = () => {
         </button>
     </div>
     <figure class="container__background">
-        <img src="src/img/keyboard.png" alt="keyboard" class="container__image">
+        <img src="assets/img/keyboard.png" alt="keyboard" class="container__image">
     </figure>
     `;
 

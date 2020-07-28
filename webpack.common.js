@@ -1,9 +1,10 @@
 const path = require("path");
 
 module.exports = {
-  entry: {
-    main: "./src/js/index.js"
-  },
+  // entry: {
+  //   main: 'babel-polyfill', './src/js/index.js'
+  // },
+  entry: ['babel-polyfill', './src/js/index.js'],
   module: {
     rules: [
       {
@@ -16,8 +17,8 @@ module.exports = {
           loader: "file-loader",
           options: {
             name: "[name].[ext]",
-            outputPath: "assets/img",
-            // publicPath: '/'
+            outputPath: "assets/img/",
+            publicPath: 'assets/img/'
           }
         }
       },
