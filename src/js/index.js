@@ -9,6 +9,8 @@ import * as gameView from './views/gameView';
 import * as summaryView from './views/summaryView';
 import * as common from './views/base';
 
+import '../img/_sprite.svg';
+
 const state = {};
 window.state = state;
 

@@ -84,13 +84,6 @@ const renderPages = (url, currentPage, pagesQnt, pgsInPagin = 5) => {
     for (let i = itStart; i <= itEnd; i++) {
         markup += `<li class="pagination__item ${i === currentPage ? 'pagination__item--current' : ''}"><a href="#${url}${i}">${i}</a></li>`
     }
-    // const markup = `
-    //     <li class="pagination__item pagination__item--current"><a href="${url}${currentPage - 2}">${currentPage - 2}</a></li>
-    //     <li class="pagination__item pagination__item--current"><a href="${url}${currentPage - 1}">${currentPage - 1}</a></li>
-    //     <li class="pagination__item pagination__item--current"><a href="${url}${currentPage}">${currentPage}</a></li>
-    //     <li class="pagination__item pagination__item--current"><a href="${url}${currentPage + 1}">${currentPage + 1}</a></li>
-    //     <li class="pagination__item pagination__item--current"><a href="${url}${currentPage + 2}">${currentPage + 2}</a></li>
-    // `;
     return markup;
 }
 

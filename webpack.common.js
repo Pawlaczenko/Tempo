@@ -12,7 +12,7 @@ module.exports = {
         use: ["html-loader"]
       },
       {
-        test: /\.(ico|svg|png|jpg|gif)$/,
+        test: /\.(ico|svg|png|jpe?g|gif)$/i,
         use: {
           loader: "file-loader",
           options: {
@@ -21,6 +21,18 @@ module.exports = {
             publicPath: 'assets/img/'
           }
         }
+      },
+      {
+        test: /\.svg$/i,
+        include: /.*_sprite\.svg/,
+        use: [
+          {
+            loader: 'svg-sprite-loader',
+            options: {
+              publicPath: 'assets/img/',
+            }
+          },
+        ],
       },
     ]
   },

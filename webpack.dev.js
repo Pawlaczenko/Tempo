@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyPlugin = require('copy-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 
 module.exports = merge(common, {
   mode: "development",
@@ -25,7 +26,8 @@ module.exports = merge(common, {
       ]
     }),
     new FaviconsWebpackPlugin('./src/img/favicon.ico'),
-    new ExtractTextPlugin("style.css")
+    new ExtractTextPlugin("style.css"),
+    new SpriteLoaderPlugin()
   ],
   module: {
     rules: [

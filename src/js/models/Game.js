@@ -13,7 +13,7 @@ export default class Game {
     async getLyrics() {
         try {
             const apiKey = '76a84f6bc199d7279cd3d04bd79f5c9f';
-            const res = await axios(`https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.lyrics.get?apikey=${apiKey}&track_id=${this.id}`);
+            const res = await axios(`http://api.musixmatch.com/ws/1.1/track.lyrics.get?apikey=${apiKey}&track_id=${this.id}`);
             let lyrics = res.data.message.body.lyrics.lyrics_body;
             let letters = lyrics.split('');
             this.letters = letters.slice(0, -75);
