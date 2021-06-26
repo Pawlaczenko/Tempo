@@ -18,21 +18,8 @@ module.exports = {
           options: {
             name: "[name].[ext]",
             outputPath: "assets/img/",
-            publicPath: 'assets/img/'
           }
         }
-      },
-      {
-        test: /\.svg$/i,
-        include: /.*_sprite\.svg/,
-        use: [
-          {
-            loader: 'svg-sprite-loader',
-            options: {
-              publicPath: 'assets/img/',
-            }
-          },
-        ],
       },
     ]
   },

@@ -11,7 +11,7 @@ export const renderHome = () => {
             <input type="text" class="search-bar__input search-bar__input--action" placeholder="Search for your song...">
             <button class="search-bar__button">
                 <svg class="search-bar__icon">
-                    <use xlink:href="./assets/img/_sprite.svg#icon-search"></use>
+                    <use xlink:href="#icon-search"></use>
                 </svg>
             </button>
         </form>
@@ -20,7 +20,7 @@ export const renderHome = () => {
         </span>
         <button class="action__cta cta cta--dark" id="getTopTracks">
             <svg class="cta__icon">
-                <use xlink:href="./assets/img/_sprite.svg#icon-random"></use>
+                <use xlink:href="#icon-random"></use>
             </svg>
             <p class="cta__text">Get top songs in US</p>
         </button>

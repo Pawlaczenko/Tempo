@@ -55,13 +55,13 @@ export const renderSummary = (obj) => {
             <div class="summary__buttons">
                 <a class="cta cta--dark summary__cta" id="tryAgain">
                     <svg class="cta__icon">
-                        <use xlink:href="./assets/img/_sprite.svg#icon-enter"></use>
+                        <use xlink:href="#icon-enter"></use>
                     </svg>
                     <p class="cta__text">Try again</p>
                 </a>
                 <a class="cta cta--light" href="#home">
                     <svg class="cta__icon">
-                        <use xlink:href="./assets/img/_sprite.svg#icon-home"></use>
+                        <use xlink:href="#icon-home"></use>
                     </svg>
                     <p class="cta__text">Home</p>
                 </a>

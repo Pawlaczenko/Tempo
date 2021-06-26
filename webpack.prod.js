@@ -19,6 +19,7 @@ module.exports = merge(common, {
       new TerserPlugin(),
       new HtmlWebpackPlugin({
         template: "./src/index.html",
+        favicon: './src/img/favicon.ico',
         minify: {
           removeAttributeQuotes: true,
           collapseWhitespace: true,
@@ -29,7 +30,7 @@ module.exports = merge(common, {
   },
   plugins: [
     new MiniCssExtractPlugin({ filename: "assets/css/[name].[contentHash].css" }),
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin(),
   ],
   module: {
     rules: [

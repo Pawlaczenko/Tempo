@@ -30,7 +30,7 @@ export const renderAbout = () => {
         </span>
         <button class="cta cta--dark" id="getTopTracks">
             <svg class="cta__icon">
-                <use xlink:href="./assets/img/_sprite.svg#icon-random"></use>
+                <use xlink:href="#icon-random"></use>
             </svg>
             <p class="cta__text">Get top songs in US</p>
         </button>

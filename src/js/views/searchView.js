@@ -47,7 +47,7 @@ const renderSong = song => {
             <img src="./assets/img/favico-opace.png" alt="${song.track_name}" class="song__img">
             <figure class='loader'></figure>
             <svg class="song__icon">
-                <use xlink:href="./assets/img/_sprite.svg#icon-play"></use>
+                <use xlink:href="#icon-play"></use>
             </svg>
         </figure>
         <div class="song__info">
@@ -93,7 +93,7 @@ const renderPagination = (currentPage = 1, pagesQnt, query, type) => {
     <li class="pagination__item pagination__item--left">
         <a href='#${url}${currentPage > 1 ? currentPage - 1 : 1}'>
             <svg class="pagination__icon">
-                <use xlink:href="./assets/img/_sprite.svg#icon-left"></use>
+                <use xlink:href="#icon-left"></use>
             </svg>
         </a>
     </li>
@@ -103,7 +103,7 @@ const renderPagination = (currentPage = 1, pagesQnt, query, type) => {
     <li class="pagination__item pagination__item--right">
         <a href='#${url}${currentPage < pagesQnt ? currentPage + 1 : currentPage}'>    
             <svg class="pagination__icon">
-                    <use xlink:href="./assets/img/_sprite.svg#icon-right"></use>
+                    <use xlink:href="#icon-right"></use>
             </svg>
         </a>
     </li>
